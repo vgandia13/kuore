@@ -12,7 +12,7 @@ import { Button } from "../components/ui/button";
 
 const LeadHeader = () => {
   return (
-    <div className="w-full bg-slate-50 min-h-screen">
+    <div className="w-full bg-slate-50">
       <div className="w-full bg-blue-500 h-2" />
 
       <div className="flex items-center justify-between bg-[#F3F3F3] p-3 border-b border-gray-300 shadow-sm">
