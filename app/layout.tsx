@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Geist } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import Navbar from "@/components/Navbar";
+import { AppProvider } from "./contexts/AppContext";
+import LayoutContent from "./components/LayoutContent";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -33,10 +34,11 @@ export default function RootLayout({
         geist.variable,
       )}
     >
-      <body className="min-h-full flex flex-col">
-        <Navbar />
-        <main>{children}</main>
-      </body>
+      <AppProvider>
+        <body className="min-h-screen">
+          <LayoutContent>{children}</LayoutContent>
+        </body>
+      </AppProvider>
     </html>
   );
 }

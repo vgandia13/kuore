@@ -1,10 +1,8 @@
+'use client';
 import { redirect } from "next/navigation";
+import { useData } from "./contexts/AppContext";
 
 export default function Home() {
-    redirect("/pages/login");
-    return (
-      <div className="bg-slate-500">
-              
-      </div>
-    );
+    const { userLogged } = useData();
+    if(!userLogged) redirect('/login');
 }

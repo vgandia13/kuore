@@ -15,20 +15,20 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "../components/ui/input-group";
+} from "./ui/input-group";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   navigationMenuTriggerStyle,
   NavigationMenuList,
-} from "../components/ui/navigation-menu";
+} from "./ui/navigation-menu";
 import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-} from "../components/ui/popover";
-import { Button } from "../components/ui/button";
+} from "./ui/popover";
+import { Button } from "./ui/button";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -60,7 +60,7 @@ const Navbar = () => {
   return (
     <nav className="flex flex-col items-center w-full p-8 bg-gray-200 sticky top-0 z-50">
       <div className="flex items-start justify-between mb-4 w-full">
-        <HeartPulse className="text-red-900" size={32} />
+        <HeartPulse className="text-red-900" size={40} />
         <div className="flex" suppressHydrationWarning>
           <Popover>
             <PopoverTrigger asChild>
