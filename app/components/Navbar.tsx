@@ -43,7 +43,7 @@ const Navbar = () => {
     },
     {
       title: "Leads",
-      href: "#",
+      href: "/leads",
     },
     {
       title: "Accounts",

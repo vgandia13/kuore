@@ -56,6 +56,7 @@ const LoginPage = () => {
             <Input
               className="p-2 mb-2 mt-0.5"
               type="email"
+              id="email"
               placeholder="Usuario@axarnet.dev"
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -65,6 +66,7 @@ const LoginPage = () => {
                 className="w-auto"
                 type={showPassword ? "text" : "password"}
                 placeholder="Contraseña"
+                id="password"
                 onChange={(e) => setPassword(e.target.value)}
               />
               <InputGroupAddon
