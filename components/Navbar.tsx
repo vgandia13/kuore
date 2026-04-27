@@ -1,3 +1,5 @@
+"use client";
+
 import {
   HeartPulse,
   Search,
@@ -27,8 +29,11 @@ import {
   PopoverContent,
 } from "../components/ui/popover";
 import { Button } from "../components/ui/button";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [search, setSearch] = useState("");
+
   const routes: { title: string; href: string }[] = [
     {
       title: "Home",
@@ -53,13 +58,13 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="flex flex-col items-center w-full p-8 bg-gray-200">
+    <nav className="flex flex-col items-center w-full p-8 bg-gray-200 sticky top-0 z-50">
       <div className="flex items-start justify-between mb-4 w-full">
         <HeartPulse className="text-red-900" size={32} />
-        <div className="flex">
+        <div className="flex" suppressHydrationWarning>
           <Popover>
             <PopoverTrigger asChild>
-              <Button className="text-black border-gray-800/40 shadow-sm">
+              <Button className="text-black bg-white border-gray-800/40 shadow-sm">
                 All <ChevronDown size={9} />
               </Button>
             </PopoverTrigger>
@@ -67,34 +72,35 @@ const Navbar = () => {
               <p className="text-black">Here is your content</p>
             </PopoverContent>
           </Popover>
-          <InputGroup className="max-w-xs text-black shadow-md">
+          <InputGroup className="max-w-xs bg-gray-50 text-black shadow-md">
             <InputGroupInput
               placeholder="Search Kuore..."
               className="placeholder:text-black/50"
+              onChange={(e) => setSearch(e.target.value)}
             />
             <InputGroupAddon>
               <Search size={18} />
             </InputGroupAddon>
-            <InputGroupAddon align="inline-end">0 results</InputGroupAddon>
+            <InputGroupAddon align="inline-end">{search ? "0 results" : ""}</InputGroupAddon>
           </InputGroup>
 
           <div className="w-8" />
         </div>
 
         <div>
-          <Button className="text-black shadow-sm">
+          <Button className="text-black bg-white shadow-sm">
             <BadgePlus size={18} />
           </Button>
-          <Button className="text-black shadow-sm">
+          <Button className="text-black bg-white shadow-sm">
             <CircleQuestionMark size={18} />
           </Button>
-          <Button className="text-black shadow-sm">
+          <Button className="text-black bg-white shadow-sm">
             <Cog size={18} />
           </Button>
-          <Button className="text-black shadow-sm">
+          <Button className="text-black bg-white shadow-sm">
             <Bell size={18} />{" "}
           </Button>
-          <Button className="text-black shadow-sm">
+          <Button className="text-black bg-white shadow-sm">
             <CircleUser size={18} />
           </Button>
         </div>
