@@ -23,9 +23,13 @@ const LoginPage = () => {
   const { setUserLogged } = useData();
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const[email, setEmail] = useState("");
+  const[password, setPassword] = useState("");
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    if(!email || !password) return;
+    localStorage.setItem("userLogged", "true");
     setUserLogged(true);
     router.push("/home");
   };
@@ -43,6 +47,7 @@ const LoginPage = () => {
             className="p-2 mb-2 mt-0.5"
             type="email"
             placeholder="Usuario@axarnet.dev"
+            onChange={(e) => setEmail(e.target.value)}
           />
           <label>Contraseña:</label>
           <InputGroup className="mb-2 mt-0.5">
@@ -50,6 +55,7 @@ const LoginPage = () => {
               className="w-auto"
               type={showPassword ? "text" : "password"}
               placeholder="Contraseña"
+              onChange={(e) => setPassword(e.target.value)}
             />
             <InputGroupAddon
               className="cursor-pointer"
@@ -59,15 +65,12 @@ const LoginPage = () => {
               {showPassword ? <Eye /> : <EyeOff />}
             </InputGroupAddon>
           </InputGroup>
-          <CardFooter>
-            <Button
-              className="w-full cursor-pointer"
-              onClick={handleLogin}
-            >
-              Iniciar Sesión
-            </Button>
-          </CardFooter>
         </CardContent>
+        <CardFooter>
+          <Button className="w-full cursor-pointer" onClick={handleLogin}>
+            Iniciar Sesión
+          </Button>
+        </CardFooter>
       </Card>
     </div>
   );
