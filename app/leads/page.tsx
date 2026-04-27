@@ -4,7 +4,7 @@ import { Button } from "../components/ui/button";
 const LeadPage = () => {
   return (
     <div className="w-full bg-slate-50 min-h-screen">
-      <div className="w-full bg-blue-500 h-1" />
+      <div className="w-full bg-blue-500 h-2" />
 
       
       <div className="flex items-center justify-between bg-[#F3F3F3] p-3 border-b border-gray-300 shadow-sm">
@@ -36,7 +36,7 @@ const LeadPage = () => {
             <Button variant="outline" size="icon" className="h-8 w-8 bg-white border-gray-300 shadow-sm">
               <RotateCw size={16} className="text-gray-600" />
             </Button>
-            <Button variant="outline" size="icon" className="h-8 w-8 bg-white border-gray-300 shadow-sm">
+            <Button variant="outline" size="icon" className="h-8 w-8 bg-white border-gray-300 shadow-sm hover:bg-gray-100">
                 <Pencil size={16} className="text-gray-600" />
               </Button>
             <Button variant="outline" size="icon" className="h-8 w-8 bg-white border-gray-300 shadow-sm">

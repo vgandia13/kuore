@@ -39,52 +39,57 @@ const LoginPage = () => {
     router.push("/home");
   };
 
-  if(userLogged) {
+  if (userLogged) {
     router.push("/home");
   }
 
   return (
-    <div className="flex items-center justify-center w-full min-h-[80vh] p-4">
-      <Card className="flex flex-col align-middle justify-center w-full max-w-md shadow-lg">
-        <CardHeader>
-          <CardTitle>Iniciar Sesión</CardTitle>
-          <CardDescription>Inicie sesión a su cuenta</CardDescription>
-        </CardHeader>
-        <form onSubmit={handleLogin}>
-          <CardContent>
-            <label htmlFor="email">Usuario:</label>
-            <Input
-              className="p-2 mb-2 mt-0.5"
-              type="email"
-              id="email"
-              placeholder="Usuario@axarnet.dev"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <label htmlFor="password">Contraseña:</label>
-            <InputGroup className="mb-2 mt-0.5">
-              <InputGroupInput
-                className="w-auto"
-                type={showPassword ? "text" : "password"}
-                placeholder="Contraseña"
-                id="password"
-                onChange={(e) => setPassword(e.target.value)}
+    <div className="flex justify-between items-center">
+      <div className="w-full h-full bg-purple-950">
+        
+      </div>
+      <div className="flex items-center justify-center w-full min-h-[80vh] p-4">
+        <Card className="flex flex-col align-middle justify-center w-full max-w-md shadow-lg">
+          <CardHeader>
+            <CardTitle>Iniciar Sesión</CardTitle>
+            <CardDescription>Inicie sesión a su cuenta</CardDescription>
+          </CardHeader>
+          <form onSubmit={handleLogin}>
+            <CardContent>
+              <label htmlFor="email">Usuario:</label>
+              <Input
+                className="p-2 mb-2 mt-0.5"
+                type="email"
+                id="email"
+                placeholder="Usuario@axarnet.dev"
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <InputGroupAddon
-                className="cursor-pointer"
-                align="inline-end"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? <Eye /> : <EyeOff />}
-              </InputGroupAddon>
-            </InputGroup>
-          </CardContent>
-          <CardFooter>
-            <Button className="w-full cursor-pointer" type="submit">
-              Iniciar Sesión
-            </Button>
-          </CardFooter>
-        </form>
-      </Card>
+              <label htmlFor="password">Contraseña:</label>
+              <InputGroup className="mb-2 mt-0.5">
+                <InputGroupInput
+                  className="w-auto"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Contraseña"
+                  id="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <InputGroupAddon
+                  className="cursor-pointer"
+                  align="inline-end"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <Eye /> : <EyeOff />}
+                </InputGroupAddon>
+              </InputGroup>
+            </CardContent>
+            <CardFooter>
+              <Button className="w-full cursor-pointer" type="submit">
+                Iniciar Sesión
+              </Button>
+            </CardFooter>
+          </form>
+        </Card>
+      </div>
     </div>
   );
 };

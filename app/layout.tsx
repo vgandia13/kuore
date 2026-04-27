@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Geist } from "next/font/google";
+import { Geist, Reddit_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { AppProvider } from "./contexts/AppContext";
@@ -8,8 +8,8 @@ import { Toaster } from "sonner";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
-const inter = Inter({
-  variable: "--font-inter",
+const reddit = Reddit_Sans({
+  variable: "--font-reddit_sans",
   display: "swap",
   subsets: ["latin"],
 });
@@ -30,7 +30,7 @@ export default function RootLayout({
       className={cn(
         "h-full",
         "antialiased",
-        inter.variable,
+        reddit.variable,
         "font-sans",
         geist.variable,
       )}
