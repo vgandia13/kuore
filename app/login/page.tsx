@@ -19,9 +19,10 @@ import { useData } from "../contexts/AppContext";
 import { Button } from "../components/ui/button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import Image from "next/image";
 
 const LoginPage = () => {
-  const { userLogged, setUserLogged } = useData();
+  const {  setUserLogged } = useData();
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
@@ -39,16 +40,17 @@ const LoginPage = () => {
     router.push("/home");
   };
 
-  if (userLogged) {
-    router.push("/home");
-  }
+  
 
   return (
-    <div className="flex justify-between items-center">
-      <div className="w-full h-full bg-purple-950">
-        
+    <div className="flex min-h-screen w-full">
+      <div className="hidden md:flex w-1/2 bg-black items-center justify-center">
+        <Image loading="eager" src="/wiseoldman.jpeg" alt="wise old man" width={500} height={500} className="opacity-30"/>
+        <p className="text-white bottom-15 font-extrabold text-lg absolute opacity-40">Concéntrate en lo importante. Yo encontraré el camino.</p>
+        <p className="text-white bottom-10 font-bold text-md absolute opacity-40">大事なことに集中を。道は私が見つける。</p>
+        <p className="text-white bottom-6 font-extralight text-sm absolute opacity-40">Daiji na koto ni shuuchuu o. Michi wa watashi ga mitsukeru.</p>
       </div>
-      <div className="flex items-center justify-center w-full min-h-[80vh] p-4">
+      <div className="flex items-center justify-center w-full min-h-[80vh] md:w-1/2 p-4">
         <Card className="flex flex-col align-middle justify-center w-full max-w-md shadow-lg">
           <CardHeader>
             <CardTitle>Iniciar Sesión</CardTitle>

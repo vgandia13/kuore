@@ -26,7 +26,7 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
   return (
     <>
       {userLogged && <Navbar />}
-      <main className="w-full h-full bg-linear-to-b from-blue-700 to-blue-200">{children}</main>
+      <main className="w-full h-full bg-gray-50">{children}</main>
     </>
   );
 }
