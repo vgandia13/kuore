@@ -23,9 +23,18 @@ import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import Link from "next/link";
+import { useData } from "../contexts/AppContext";
+import { toast } from "sonner";
 
 const Navbar = () => {
   const [search, setSearch] = useState("");
+  const { userLogged, setUserLogged } = useData();
+
+  const handleCerrarSesion = () => {
+    localStorage.removeItem("userLogged");
+    setUserLogged(false);
+    toast.success("Cierre de sesión exitoso");
+  };
 
   const routes: { title: string; href: string }[] = [
     {
@@ -83,6 +92,7 @@ const Navbar = () => {
         </div>
 
         <div>
+          {userLogged && <Button onClick={handleCerrarSesion}>Cerrar Sesion</Button>}
           <Button className="text-black bg-white shadow-sm">
             <BadgePlus size={18} />
           </Button>
@@ -107,13 +117,18 @@ const Navbar = () => {
           <NavigationMenuList>
             {routes.map((route) => (
               <NavigationMenuItem key={route.title}>
-                <Link href={route.href} passHref legacyBehavior>
+                {/* 1. Eliminamos passHref (no es necesario en versiones modernas de Next.js con asChild) */}
+                <Link href={route.href} passHref>
+                  {/* 2. Añadimos asChild para que NavigationMenuLink use el <a> de legacyBehavior */}
                   <NavigationMenuLink
-                    href={route.href}
+                    asChild
                     className={`${navigationMenuTriggerStyle()} bg-transparent text-black hover:bg-black/10`}
                   >
-                    {route.title}
-                    <ChevronDown size={16} className="ml-1" />
+                    {/* 3. El contenido queda igual, pero ahora solo habrá un <a> en el DOM */}
+                    <span className="flex items-center cursor-pointer">
+                      {route.title}
+                      <ChevronDown size={16} className="ml-1" />
+                    </span>
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>

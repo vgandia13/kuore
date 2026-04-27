@@ -4,8 +4,9 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { AppProvider } from "./contexts/AppContext";
 import LayoutContent from "./components/LayoutContent";
+import { Toaster } from "sonner";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const inter = Inter({
   variable: "--font-inter",
@@ -36,6 +37,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen">
         <AppProvider>
+          <Toaster position="top-center" richColors />
           <LayoutContent>{children}</LayoutContent>
         </AppProvider>
       </body>

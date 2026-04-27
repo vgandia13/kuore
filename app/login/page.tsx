@@ -18,21 +18,30 @@ import { useState } from "react";
 import { useData } from "../contexts/AppContext";
 import { Button } from "../components/ui/button";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const LoginPage = () => {
-  const { setUserLogged } = useData();
+  const { userLogged, setUserLogged } = useData();
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const[email, setEmail] = useState("");
-  const[password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if(!email || !password) return;
+    if (!email || !password) {
+      toast.error("Por favor, complete todos los campos");
+      return;
+    }
     localStorage.setItem("userLogged", "true");
     setUserLogged(true);
+    toast.success("Inicio de sesión exitoso");
     router.push("/home");
   };
+
+  if(userLogged) {
+    router.push("/home");
+  }
 
   return (
     <div className="flex items-center justify-center w-full min-h-[80vh] p-4">
