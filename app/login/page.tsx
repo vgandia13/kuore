@@ -41,36 +41,38 @@ const LoginPage = () => {
           <CardTitle>Iniciar Sesión</CardTitle>
           <CardDescription>Inicie sesión a su cuenta</CardDescription>
         </CardHeader>
-        <CardContent>
-          <label>Usuario:</label>
-          <Input
-            className="p-2 mb-2 mt-0.5"
-            type="email"
-            placeholder="Usuario@axarnet.dev"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label>Contraseña:</label>
-          <InputGroup className="mb-2 mt-0.5">
-            <InputGroupInput
-              className="w-auto"
-              type={showPassword ? "text" : "password"}
-              placeholder="Contraseña"
-              onChange={(e) => setPassword(e.target.value)}
+        <form onSubmit={handleLogin}>
+          <CardContent>
+            <label htmlFor="email">Usuario:</label>
+            <Input
+              className="p-2 mb-2 mt-0.5"
+              type="email"
+              placeholder="Usuario@axarnet.dev"
+              onChange={(e) => setEmail(e.target.value)}
             />
-            <InputGroupAddon
-              className="cursor-pointer"
-              align="inline-end"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? <Eye /> : <EyeOff />}
-            </InputGroupAddon>
-          </InputGroup>
-        </CardContent>
-        <CardFooter>
-          <Button className="w-full cursor-pointer" onClick={handleLogin}>
-            Iniciar Sesión
-          </Button>
-        </CardFooter>
+            <label htmlFor="password">Contraseña:</label>
+            <InputGroup className="mb-2 mt-0.5">
+              <InputGroupInput
+                className="w-auto"
+                type={showPassword ? "text" : "password"}
+                placeholder="Contraseña"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <InputGroupAddon
+                className="cursor-pointer"
+                align="inline-end"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <Eye /> : <EyeOff />}
+              </InputGroupAddon>
+            </InputGroup>
+          </CardContent>
+          <CardFooter>
+            <Button className="w-full cursor-pointer" type="submit">
+              Iniciar Sesión
+            </Button>
+          </CardFooter>
+        </form>
       </Card>
     </div>
   );

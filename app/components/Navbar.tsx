@@ -11,11 +11,7 @@ import {
   Bell,
   CircleUser,
 } from "lucide-react";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "./ui/input-group";
+import { InputGroup, InputGroupAddon, InputGroupInput } from "./ui/input-group";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -23,13 +19,10 @@ import {
   navigationMenuTriggerStyle,
   NavigationMenuList,
 } from "./ui/navigation-menu";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from "./ui/popover";
+import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover";
 import { Button } from "./ui/button";
 import { useState } from "react";
+import Link from "next/link";
 
 const Navbar = () => {
   const [search, setSearch] = useState("");
@@ -81,7 +74,9 @@ const Navbar = () => {
             <InputGroupAddon>
               <Search size={18} />
             </InputGroupAddon>
-            <InputGroupAddon align="inline-end">{search ? "0 results" : ""}</InputGroupAddon>
+            <InputGroupAddon align="inline-end">
+              {search ? "0 results" : ""}
+            </InputGroupAddon>
           </InputGroup>
 
           <div className="w-8" />
@@ -112,13 +107,15 @@ const Navbar = () => {
           <NavigationMenuList>
             {routes.map((route) => (
               <NavigationMenuItem key={route.title}>
-                <NavigationMenuLink
-                  href={route.href}
-                  className={`${navigationMenuTriggerStyle()} bg-transparent text-black hover:bg-black/10`}
-                >
-                  {route.title}
-                  <ChevronDown size={16} className="ml-1" />
-                </NavigationMenuLink>
+                <Link href={route.href} passHref legacyBehavior>
+                  <NavigationMenuLink
+                    href={route.href}
+                    className={`${navigationMenuTriggerStyle()} bg-transparent text-black hover:bg-black/10`}
+                  >
+                    {route.title}
+                    <ChevronDown size={16} className="ml-1" />
+                  </NavigationMenuLink>
+                </Link>
               </NavigationMenuItem>
             ))}
           </NavigationMenuList>
