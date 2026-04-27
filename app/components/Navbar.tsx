@@ -37,7 +37,7 @@ const Navbar = () => {
   const routes: { title: string; href: string }[] = [
     {
       title: "Home",
-      href: "#",
+      href: "/home",
     },
     {
       title: "Leads",

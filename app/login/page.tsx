@@ -5,6 +5,7 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
+  CardFooter,
 } from "@/app/components/ui/card";
 import { Input } from "../components/ui/input";
 import {
@@ -58,9 +59,14 @@ const LoginPage = () => {
               {showPassword ? <Eye /> : <EyeOff />}
             </InputGroupAddon>
           </InputGroup>
-          <Button className="w-full cursor-pointer mt-2" onClick={handleLogin}>
-            Iniciar Sesión
-          </Button>
+          <CardFooter>
+            <Button
+              className="w-full cursor-pointer"
+              onClick={handleLogin}
+            >
+              Iniciar Sesión
+            </Button>
+          </CardFooter>
         </CardContent>
       </Card>
     </div>
