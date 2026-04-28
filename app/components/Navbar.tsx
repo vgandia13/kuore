@@ -62,8 +62,10 @@ const Navbar = () => {
   return (
     <nav className="flex flex-col items-center w-full p-8 bg-gray-200 sticky top-0 z-50">
       <div className="flex items-start justify-between mb-4 w-full">
-        <HeartPulse className="text-red-900" size={40} />
-        <div className="flex" suppressHydrationWarning>
+        <div className="w-1/3">
+          <HeartPulse className="text-red-900" size={40} />
+        </div>
+        <div className="flex w-1/" suppressHydrationWarning>
           <Popover>
             <PopoverTrigger asChild>
               <Button className="text-black bg-white border-gray-800/40 shadow-sm">
@@ -91,8 +93,10 @@ const Navbar = () => {
           <div className="w-8" />
         </div>
 
-        <div>
-          {userLogged && <Button onClick={handleCerrarSesion}>Cerrar Sesion</Button>}
+        <div className="w-1/6">
+          {userLogged && (
+            <Button onClick={handleCerrarSesion}>Cerrar Sesion</Button>
+          )}
           <Button className="text-black bg-white shadow-sm">
             <BadgePlus size={18} />
           </Button>
