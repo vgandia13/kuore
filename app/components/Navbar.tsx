@@ -10,8 +10,6 @@ import {
   Cog,
   Bell,
   CircleUser,
-  Sun,
-  Moon,
 } from "lucide-react";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "./ui/input-group";
 import {
@@ -27,64 +25,48 @@ import { useState } from "react";
 import Link from "next/link";
 import { useData } from "../contexts/AppContext";
 import { toast } from "sonner";
-import { useTheme } from "next-themes";
-import { Switch } from "@/components/ui/switch";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Navbar = () => {
   const [search, setSearch] = useState("");
   const { userLogged, setUserLogged } = useData();
-  const { theme, setTheme } = useTheme();
 
   const handleCerrarSesion = () => {
     localStorage.removeItem("userLogged");
     setUserLogged(false);
-    toast.success("Cierre de sesión exitoso");
+    toast.success("Cierre de sesión exitoso");
   };
 
   const routes: { title: string; href: string }[] = [
-    {
-      title: "Home",
-      href: "/home",
-    },
-    {
-      title: "Leads",
-      href: "/leads",
-    },
-    {
-      title: "Accounts",
-      href: "#",
-    },
-    {
-      title: "Contacts",
-      href: "#",
-    },
-    {
-      title: "Opportunities",
-      href: "#",
-    },
+    { title: "Home", href: "/home" },
+    { title: "Leads", href: "/leads" },
+    { title: "Accounts", href: "#" },
+    { title: "Contacts", href: "#" },
+    { title: "Opportunities", href: "#" },
   ];
 
   return (
-    <nav className="flex flex-col items-center w-full p-8 bg-gray-200 sticky top-0 z-50">
+    <nav className="flex flex-col items-center w-full p-8 bg-muted border-b border-border sticky top-0 z-50">
       <div className="flex items-start justify-between mb-4 w-full">
         <div className="w-1/3">
-          <HeartPulse className="text-red-900" size={40} />
+          <HeartPulse className="text-destructive" size={40} />
         </div>
+
         <div className="flex w-1/" suppressHydrationWarning>
           <Popover>
             <PopoverTrigger asChild>
-              <Button className="text-black bg-white border-gray-800/40 shadow-sm">
+              <Button variant="outline" className="shadow-sm mr-1">
                 All <ChevronDown size={9} />
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="border-gray-800/40">
-              <p className="text-black">Here is your content</p>
+            <PopoverContent>
+              <p className="text-foreground">Here is your content</p>
             </PopoverContent>
           </Popover>
-          <InputGroup className="max-w-xs bg-gray-50 text-black shadow-md">
+          <InputGroup className="max-w-xs shadow-md">
             <InputGroupInput
               placeholder="Search Kuore..."
-              className="placeholder:text-black/50"
+              className="placeholder:text-muted-foreground"
               onChange={(e) => setSearch(e.target.value)}
             />
             <InputGroupAddon>
@@ -94,57 +76,46 @@ const Navbar = () => {
               {search ? "0 results" : ""}
             </InputGroupAddon>
           </InputGroup>
-
           <div className="w-8" />
         </div>
-        <div className="flex items-center">
-          <Button
-            variant={"ghost"}
-            className="text-black bg-gray-50 shadow-md"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          >
-            <Sun className="text-black cursor-pointer" size={20} />
-            <Switch className="border border-black/20" checked={theme === "dark"} />
-            <Moon className="text-black cursor-pointer" size={20} />
-          </Button>
-        </div>
-        <div className="w-1/6">
-          {userLogged && (
-            <Button onClick={handleCerrarSesion}>Cerrar Sesion</Button>
-          )}
 
-          <Button className="text-black bg-white shadow-sm">
+        <div className="flex items-center border rounded-md bg-background/40 overflow-hidden shadow-sm p-1 gap-2">
+          <ThemeToggle />
+        </div>
+
+        <div className="w-1/6 flex items-center gap-1">
+          {userLogged && (
+            <Button onClick={handleCerrarSesion}>Cerrar Sesión</Button>
+          )}
+          <Button variant="outline" size="icon" className="shadow-sm">
             <BadgePlus size={18} />
           </Button>
-          <Button className="text-black bg-white shadow-sm">
+          <Button variant="outline" size="icon" className="shadow-sm">
             <CircleQuestionMark size={18} />
           </Button>
-          <Button className="text-black bg-white shadow-sm">
+          <Button variant="outline" size="icon" className="shadow-sm">
             <Cog size={18} />
           </Button>
-          <Button className="text-black bg-white shadow-sm">
-            <Bell size={18} />{" "}
+          <Button variant="outline" size="icon" className="shadow-sm">
+            <Bell size={18} />
           </Button>
-          <Button className="text-black bg-white shadow-sm">
+          <Button variant="outline" size="icon" className="shadow-sm">
             <CircleUser size={18} />
           </Button>
         </div>
       </div>
 
       <div className="flex justify-start items-center w-full gap-4">
-        <Grip className="text-black cursor-pointer" size={20} />
+        <Grip className="text-foreground cursor-pointer" size={20} />
         <NavigationMenu>
           <NavigationMenuList>
             {routes.map((route) => (
               <NavigationMenuItem key={route.title}>
-                {/* 1. Eliminamos passHref (no es necesario en versiones modernas de Next.js con asChild) */}
                 <Link href={route.href} passHref>
-                  {/* 2. Añadimos asChild para que NavigationMenuLink use el <a> de legacyBehavior */}
                   <NavigationMenuLink
                     asChild
-                    className={`${navigationMenuTriggerStyle()} bg-transparent text-black hover:bg-black/10`}
+                    className={`${navigationMenuTriggerStyle()} bg-transparent`}
                   >
-                    {/* 3. El contenido queda igual, pero ahora solo habrá un <a> en el DOM */}
                     <span className="flex items-center cursor-pointer">
                       {route.title}
                       <ChevronDown size={16} className="ml-1" />

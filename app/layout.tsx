@@ -35,10 +35,11 @@ export default function RootLayout({
         "font-sans",
         geist.variable,
       )}
+      suppressHydrationWarning
     >
       <body className="min-h-screen">
         <AppProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange>
+          <ThemeProvider attribute="class" defaultTheme="system">
           <Toaster position="top-center" richColors />
           <LayoutContent>{children}</LayoutContent>
           </ThemeProvider>

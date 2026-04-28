@@ -22,11 +22,11 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
   if (!userLogged && pathname !== "/login") {
     return null;
   }
-  
+
   return (
     <>
       {userLogged && <Navbar />}
-      <main className="w-full h-full bg-gray-50">{children}</main>
+      <main className="w-full h-full bg-background text-foreground">{children}</main>
     </>
   );
 }

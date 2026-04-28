@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Table,
   TableBody,
@@ -9,7 +11,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Bookmark, ChevronDown } from "lucide-react";
 import LeadHeader from "./LeadHeader";
-import { Button } from "../components/ui/button"; 
+import { Button } from "../components/ui/button";
 
 const LeadPage = () => {
   const stats = [
@@ -24,7 +26,7 @@ const LeadPage = () => {
 
   const leads = [
     {
-      id: 1, 
+      id: 1,
       name: "John Steele",
       title: "Senior VIP",
       company: "BigLife Inc.",
@@ -49,14 +51,15 @@ const LeadPage = () => {
       leadStatus: "Working",
       leadSource: "Trade Show",
       lastActivity: "4/18/2025",
-    }
+    },
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       <LeadHeader />
 
-      <div className="flex items-center justify-between bg-blue-800 text-white px-8 py-4 overflow-x-auto">
+      {/* Stats bar — mantiene su identidad visual de color marca */}
+      <div className="flex items-center justify-between bg-blue-800  dark:bg-blue-950 text-white px-8 py-4 overflow-x-auto">
         {stats.map((stat, i) => (
           <div
             key={i}
@@ -70,40 +73,38 @@ const LeadPage = () => {
         ))}
       </div>
 
-      <div className="flex items-center w-full justify-between p-3 bg-slate-50 border-b border-slate-200">
-        <div className="ml-2 flex items-center gap-2 text-sm text-slate-600">
-          <span className="font-medium text-slate-900">6 items</span>
-          <span className="text-slate-400" aria-hidden="true">
-            •
-          </span>
+      <div className="flex items-center w-full justify-between p-3 bg-muted border-b border-border">
+        <div className="ml-2 flex items-center gap-2 text-sm text-muted-foreground">
+          <span className="font-medium text-foreground">6 items</span>
+          <span className="text-muted-foreground" aria-hidden="true">•</span>
           <span>Filtered by Created Date, Me, Total leads</span>
         </div>
 
-        <div className="border border-black/60 rounded-full flex items-center bg-white overflow-hidden shadow-sm">
+        <div className="border border-border rounded-full flex items-center bg-background overflow-hidden shadow-sm">
           <Button
             variant="link"
-            className="text-blue-600 px-4 h-9 hover:no-underline hover:bg-slate-100"
+            className="text-blue-500 px-4 h-9 hover:no-underline hover:bg-muted"
           >
             Add to campaign
           </Button>
-          <span className="h-6 border-r border-black/60" aria-hidden="true" />
+          <span className="h-6 border-r border-border" aria-hidden="true" />
           <Button
             variant="link"
-            className="text-blue-600 px-4 h-9 hover:no-underline hover:bg-slate-100"
+            className="text-blue-500 px-4 h-9 hover:no-underline hover:bg-muted"
           >
             Change Status
           </Button>
-          <span className="h-6 border-r border-black/60" aria-hidden="true" />
+          <span className="h-6 border-r border-border" aria-hidden="true" />
           <Button
             variant="link"
-            className="text-blue-600 px-4 h-9 hover:no-underline hover:bg-slate-100"
+            className="text-blue-500 px-4 h-9 hover:no-underline hover:bg-muted"
           >
             Change Owner
           </Button>
-          <span className="h-6 border-r border-black/60" aria-hidden="true" />
+          <span className="h-6 border-r border-border" aria-hidden="true" />
           <Button
             variant="link"
-            className="text-blue-600 px-4 h-9 hover:no-underline hover:bg-slate-100"
+            className="text-blue-500 px-4 h-9 hover:no-underline hover:bg-muted"
           >
             Assign
           </Button>
@@ -111,63 +112,55 @@ const LeadPage = () => {
       </div>
 
       <div className="p-4">
-        <div className="rounded-lg border border-slate-200 overflow-hidden shadow-sm">
-          <Table className="border-collapse [&_th]:border [&_td]:border [&_th]:border-slate-200 [&_td]:border-slate-200">
-            <TableHeader className="bg-slate-50">
+        <div className="rounded-lg border border-border overflow-hidden shadow-sm">
+          <Table className="border-collapse [&_th]:border [&_td]:border [&_th]:border-border [&_td]:border-border">
+            <TableHeader className="bg-muted">
               <TableRow>
-                {[
-                  "Name",
-                  "Title",
-                  "Company",
-                  "Status",
-                  "Source",
-                  "Last Activity",
-                ].map((h) => (
-                  <TableHead key={h} className="font-bold text-slate-700">
-                    <div className="flex items-center gap-1 cursor-pointer hover:text-slate-900">
-                      {h === "Title" && (
-                        <Bookmark
-                          fill="gray"
-                          className="text-gray-600 mr-1"
-                          size={14}
-                        />
-                      )}
-                      {h} <ChevronDown size={14} className="text-slate-400" />
-                    </div>
-                  </TableHead>
-                ))}
+                {["Name", "Title", "Company", "Status", "Source", "Last Activity"].map(
+                  (h) => (
+                    <TableHead key={h} className="font-bold text-foreground">
+                      <div className="flex items-center gap-1 cursor-pointer hover:text-foreground/80">
+                        {h === "Title" && (
+                          <Bookmark
+                            fill="currentColor"
+                            className="text-muted-foreground mr-1"
+                            size={14}
+                          />
+                        )}
+                        {h} <ChevronDown size={14} className="text-muted-foreground" />
+                      </div>
+                    </TableHead>
+                  )
+                )}
               </TableRow>
             </TableHeader>
             <TableBody>
               {leads.map((lead) => (
                 <TableRow
                   key={lead.id}
-                  className="hover:bg-slate-50/80 transition-colors"
+                  className="hover:bg-muted/50 transition-colors"
                 >
-                  <TableCell className="font-medium text-blue-600 cursor-pointer hover:underline">
+                  <TableCell className="font-medium text-blue-500 cursor-pointer hover:underline">
                     {lead.name}
                   </TableCell>
                   <TableCell>
                     <div className="flex items-center gap-2">
-                      <Bookmark size={14} className="text-slate-400" />
+                      <Bookmark size={14} className="text-muted-foreground" />
                       {lead.title}
                     </div>
                   </TableCell>
-                  <TableCell className="text-slate-600">
+                  <TableCell className="text-muted-foreground">
                     {lead.company}
                   </TableCell>
                   <TableCell>
-                    <Badge
-                      variant="outline"
-                      className="font-normal border-slate-300"
-                    >
+                    <Badge variant="outline" className="font-normal">
                       {lead.leadStatus}
                     </Badge>
                   </TableCell>
-                  <TableCell className="text-slate-600">
+                  <TableCell className="text-muted-foreground">
                     {lead.leadSource}
                   </TableCell>
-                  <TableCell className="text-slate-500 text-sm">
+                  <TableCell className="text-muted-foreground text-sm">
                     {lead.lastActivity}
                   </TableCell>
                 </TableRow>
