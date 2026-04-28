@@ -114,12 +114,14 @@ const Navbar = () => {
                 <Link href={route.href} passHref>
                   <NavigationMenuLink
                     asChild
-                    className={`${navigationMenuTriggerStyle()} bg-transparent`}
+                    className={`${navigationMenuTriggerStyle()} `}
                   >
-                    <span className="flex items-center cursor-pointer">
-                      {route.title}
-                      <ChevronDown size={16} className="ml-1" />
-                    </span>
+                    <Button variant={'ghost'}>
+                      <span className="flex items-center cursor-pointer">
+                        {route.title}
+                        <ChevronDown size={16} className="ml-1" />
+                      </span>
+                    </Button>
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
