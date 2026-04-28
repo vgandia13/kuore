@@ -10,6 +10,8 @@ import {
   Cog,
   Bell,
   CircleUser,
+  Sun,
+  Moon,
 } from "lucide-react";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "./ui/input-group";
 import {
@@ -25,10 +27,13 @@ import { useState } from "react";
 import Link from "next/link";
 import { useData } from "../contexts/AppContext";
 import { toast } from "sonner";
+import { useTheme } from "next-themes";
+import { Switch } from "@/components/ui/switch";
 
 const Navbar = () => {
   const [search, setSearch] = useState("");
   const { userLogged, setUserLogged } = useData();
+  const { theme, setTheme } = useTheme();
 
   const handleCerrarSesion = () => {
     localStorage.removeItem("userLogged");
@@ -92,11 +97,22 @@ const Navbar = () => {
 
           <div className="w-8" />
         </div>
-
+        <div className="flex items-center">
+          <Button
+            variant={"ghost"}
+            className="text-black bg-gray-50 shadow-md"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          >
+            <Sun className="text-black cursor-pointer" size={20} />
+            <Switch className="border border-black/20" checked={theme === "dark"} />
+            <Moon className="text-black cursor-pointer" size={20} />
+          </Button>
+        </div>
         <div className="w-1/6">
           {userLogged && (
             <Button onClick={handleCerrarSesion}>Cerrar Sesion</Button>
           )}
+
           <Button className="text-black bg-white shadow-sm">
             <BadgePlus size={18} />
           </Button>
