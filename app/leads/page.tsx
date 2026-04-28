@@ -23,9 +23,8 @@ const LeadPage = () => {
   ];
 
   const leads = [
-    // CamelCase
     {
-      id: 1, // Añadido un ID para las keys
+      id: 1, 
       name: "John Steele",
       title: "Senior VIP",
       company: "BigLife Inc.",
@@ -102,13 +101,11 @@ const LeadPage = () => {
         </div>
       </div>
 
-      {/* Table Section */}
       <div className="p-4">
         <div className="rounded-lg border border-slate-200 overflow-hidden shadow-sm">
           <Table className="border-collapse [&_th]:border [&_td]:border [&_th]:border-slate-200 [&_td]:border-slate-200">
             <TableHeader className="bg-slate-50">
               <TableRow>
-                {/* Headers con Flex wrappers correctos */}
                 {[
                   "Name",
                   "Title",
@@ -143,7 +140,7 @@ const LeadPage = () => {
                   </TableCell>
                   <TableCell>
                     <div className="flex items-center gap-2">
-                      <Bookmark size={14} className="text-slate-400" />{" "}
+                      <Bookmark size={14} className="text-slate-400" />
                       {lead.title}
                     </div>
                   </TableCell>
