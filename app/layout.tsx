@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { AppProvider } from "./contexts/AppContext";
 import LayoutContent from "./components/LayoutContent";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "./components/theme-provider";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -37,8 +38,10 @@ export default function RootLayout({
     >
       <body className="min-h-screen">
         <AppProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange>
           <Toaster position="top-center" richColors />
           <LayoutContent>{children}</LayoutContent>
+          </ThemeProvider>
         </AppProvider>
       </body>
     </html>

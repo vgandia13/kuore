@@ -41,6 +41,15 @@ const LeadPage = () => {
       leadSource: "Web",
       lastActivity: "4/17/2025",
     },
+    {
+      id: 3,
+      name: "John Pork",
+      title: "CEO",
+      company: "BigLife Inc.",
+      leadStatus: "Working",
+      leadSource: "Trade Show",
+      lastActivity: "4/18/2025",
+    }
   ];
 
   return (
