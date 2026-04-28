@@ -6,6 +6,7 @@ import {
   TableRow,
   TableCell,
 } from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
 import { Bookmark } from "lucide-react";
 import LeadHeader from "./LeadHeader";
 
@@ -21,6 +22,14 @@ const LeadPage = () => {
   ];
 
   const Leads = [
+    {
+      name: "John Steele",
+      title: "Senior VIP",
+      company: "BigLife Inc.",
+      leadStatus: "Working",
+      leadSource: "Trade Show",
+      lastActivity: "4/16/2025",
+    },
     {
       name: "John Steele",
       title: "Senior VIP",
@@ -80,9 +89,7 @@ const LeadPage = () => {
                 <TableCell>{lead.title}</TableCell>
                 <TableCell>{lead.company}</TableCell>
                 <TableCell>
-                  <span className="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-semibold">
-                    {lead.leadStatus}
-                  </span>
+                  <Badge variant={'outline'}>{lead.leadStatus}</Badge>
                 </TableCell>
                 <TableCell>{lead.leadSource}</TableCell>
                 <TableCell className="text-right">
