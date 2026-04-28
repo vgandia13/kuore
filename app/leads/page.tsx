@@ -9,6 +9,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Bookmark } from "lucide-react";
 import LeadHeader from "./LeadHeader";
+import { Button } from "../components/ui/button";
 
 const LeadPage = () => {
   const stats = [
@@ -57,9 +58,29 @@ const LeadPage = () => {
           </div>
         ))}
       </div>
-
-      {/* Tabla con diseño más limpio */}
-      <div className="p-4">
+      <div className="flex align-middle w-full justify-between p-3 bg-slate-50">
+        <span className="ml-2 flex items-center gap-6">
+          6 items <li>Filtered by Created Date, Me, Total leads</li>
+        </span>
+        <div className="border border-black/60 rounded-4xl flex items-center divide-x divide-solid divide-black/60">
+          <Button variant={"link"} className="text-blue-600 px-4">
+            Add to campaign
+          </Button>
+          <span className="h-8 border-r border-black/60" />
+          <Button variant={"link"} className="text-blue-600 px-4">
+            Change Status
+          </Button>
+          <span className="h-8 border-r border-black/60" />
+          <Button variant={"link"} className="text-blue-600 px-4">
+            Change Owner
+          </Button>
+          <span className="h-8 border-r border-black/60" />
+          <Button variant={"link"} className="text-blue-600 px-4">
+            Assign
+          </Button>
+        </div>
+      </div>
+      <div className="p-2">
         <Table className="border border-slate-200">
           <TableHeader className="bg-slate-50">
             <TableRow>
@@ -86,10 +107,14 @@ const LeadPage = () => {
                 <TableCell className="font-medium text-blue-600">
                   {lead.name}
                 </TableCell>
-                <TableCell><div className="flex items-center gap-2"><Bookmark size={14} /> {lead.title}</div></TableCell>
+                <TableCell>
+                  <div className="flex items-center gap-2">
+                    <Bookmark size={14} /> {lead.title}
+                  </div>
+                </TableCell>
                 <TableCell>{lead.company}</TableCell>
                 <TableCell>
-                  <Badge variant={'outline'}>{lead.leadStatus}</Badge>
+                  <Badge variant={"outline"}>{lead.leadStatus}</Badge>
                 </TableCell>
                 <TableCell>{lead.leadSource}</TableCell>
                 <TableCell className="text-right">
