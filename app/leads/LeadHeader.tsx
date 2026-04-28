@@ -40,14 +40,14 @@ const LeadHeader = () => {
           <div className="flex items-center border border-gray-300 rounded-md bg-white overflow-hidden shadow-sm mr-2">
             <Button
               variant="ghost"
-              className="h-8 px-3 text-xs font-semibold border-r border-gray-300 rounded-none hover:bg-gray-100"
+              className="h-8 w-15 px-3 text-xs font-semibold border-r border-gray-300 rounded-none hover:bg-gray-100"
             >
               New
             </Button>
             <Button
               variant="ghost"
               size="icon"
-              className="h-8 w-8 rounded-none hover:bg-gray-100"
+              className="h-6 w-6 rounded-none hover:bg-gray-100"
             >
               <ChevronDown size={14} />
             </Button>
