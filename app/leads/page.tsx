@@ -66,7 +66,7 @@ const LeadPage = () => {
               <TableHead className="font-bold text-slate-700">Name</TableHead>
               <TableHead className="font-bold text-slate-700">
                 <div className="flex items-center gap-2">
-                  <Bookmark size={14} />
+                  <Bookmark fill="gray" className="text-gray-600" size={14} />
                   Title
                 </div>
               </TableHead>
@@ -86,7 +86,7 @@ const LeadPage = () => {
                 <TableCell className="font-medium text-blue-600">
                   {lead.name}
                 </TableCell>
-                <TableCell>{lead.title}</TableCell>
+                <TableCell><div className="flex items-center gap-2"><Bookmark size={14} /> {lead.title}</div></TableCell>
                 <TableCell>{lead.company}</TableCell>
                 <TableCell>
                   <Badge variant={'outline'}>{lead.leadStatus}</Badge>
