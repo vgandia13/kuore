@@ -75,7 +75,7 @@ const LeadPage = () => {
 
       <div className="flex items-center w-full justify-between p-3 bg-muted border-b border-border">
         <div className="ml-2 flex items-center gap-2 text-sm text-muted-foreground">
-          <span className="font-medium text-foreground">6 items</span>
+          <span className="font-medium text-foreground">3 items</span>
           <span className="text-muted-foreground" aria-hidden="true">•</span>
           <span>Filtered by Created Date, Me, Total leads</span>
         </div>

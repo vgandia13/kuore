@@ -79,7 +79,7 @@ const Navbar = () => {
           <div className="w-8" />
         </div>
 
-        <div className="flex items-center border rounded-md bg-background/40 overflow-hidden shadow-sm p-1 gap-2">
+        <div className="flex items-center border rounded-md bg-background/40 overflow-hidden shadow-md p-1 gap-2">
           <ThemeToggle />
         </div>
 
