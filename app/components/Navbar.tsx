@@ -83,7 +83,7 @@ const Navbar = () => {
           <ThemeToggle />
         </div>
 
-        <div className="w-1/6 flex items-center gap-1">
+        <div className="w-1/6 flex items-center gap-2">
           {userLogged && (
             <Button onClick={handleCerrarSesion}>Cerrar Sesión</Button>
           )}

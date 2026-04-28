@@ -14,6 +14,7 @@ export function ThemeToggle() {
   // Esto garantiza que el componente sabe en qué entorno está.
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
