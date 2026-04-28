@@ -7,11 +7,11 @@ import {
   TableHeader,
   TableRow,
   TableCell,
-} from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
+} from "@/app/components/ui/table";
+import { Badge } from "@/app/components/ui/badge";
 import { Bookmark, ChevronDown } from "lucide-react";
 import LeadHeader from "./LeadHeader";
-import { Button } from "../components/ui/button";
+import { Button } from "@/app/components/ui/button";
 
 const LeadPage = () => {
   const stats = [

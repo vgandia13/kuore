@@ -8,7 +8,7 @@ import {
   TableProperties,
   Pencil,
 } from "lucide-react";
-import { Button } from "../components/ui/button";
+import { Button } from "@/app/components/ui/button";
 
 const LeadHeader = () => {
   return (
