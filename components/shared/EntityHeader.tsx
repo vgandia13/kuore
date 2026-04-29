@@ -23,28 +23,32 @@ export const EntityHeader = ({
     <div className="w-full bg-background">
       <div className={`w-full ${colorClass} h-2`} />
 
-      <div className="flex items-center justify-between bg-muted p-4 border-b border-border shadow-sm">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-muted p-4 border-b border-border shadow-sm gap-4">
         <div className="flex items-center gap-3">
           <div
-            className={`${colorClass} dark:opacity-80 p-1.5 rounded-lg flex items-center justify-center shadow-sm`}
+            className={`${colorClass} dark:opacity-80 p-1.5 rounded-lg flex items-center justify-center shadow-sm flex-shrink-0`}
           >
             {React.isValidElement(icon) &&
               React.cloneElement(icon, {
                 className: "text-white",
-                size: 24,
+                size: 20,
               } as React.SVGAttributes<SVGElement>)}
           </div>
           <div className="flex flex-col">
             <span className="text-xs font-medium text-muted-foreground leading-tight">
               {subtitle}
             </span>
-            <h1 className="text-lg font-semibold text-foreground leading-none">
+            <div className="font-semibold text-foreground leading-none">
               {title}
-            </h1>
+            </div>
           </div>
         </div>
 
-        {actions && <div className="flex items-center gap-2">{actions}</div>}
+        {actions && (
+          <div className="flex flex-wrap items-center gap-1 w-full sm:w-auto">
+            {actions}
+          </div>
+        )}
       </div>
 
       {tabs && (

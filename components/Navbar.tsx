@@ -4,7 +4,6 @@ import {
   HeartPulse,
   Search,
   Grip,
-  ChevronDown,
   BadgePlus,
   CircleQuestionMark,
   Cog,
@@ -19,7 +18,6 @@ import {
   navigationMenuTriggerStyle,
   NavigationMenuList,
 } from "./ui/navigation-menu";
-import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import Link from "next/link";
@@ -28,7 +26,7 @@ import { toast } from "sonner";
 import { ThemeToggle } from "./ThemeToggle";
 
 const Navbar = () => {
-  const [search, setSearch] = useState("");
+  const [openMenu, setOpenMenu] = useState(false);
   const { userLogged, setUserLogged } = useData();
 
   const handleCerrarSesion = () => {
@@ -46,89 +44,87 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="flex flex-col items-center w-full pt-2 px-2 bg-muted border-b border-border sticky gap-1 top-0 z-50">
-      <div className="flex items-start justify-between w-full">
-        <div className="w-1/3">
+    <nav className="flex flex-col w-full bg-muted border-b border-border sticky top-0 z-50 overflow-hidden">
+      <div className="hidden md:flex items-center justify-between w-full px-4 py-3 gap-4">
+        {/* Navbar for larger screens */}
+        <div className="flex items-center gap-6">
           <HeartPulse className="text-destructive" size={40} />
+          <div className="flex items-center gap-1">
+            <Grip className="text-foreground cursor-pointer" size={20} />
+            <NavigationMenu>
+              <NavigationMenuList>
+                {routes.map((route) => (
+                  <NavigationMenuItem key={route.title}>
+                    <Link href={route.href} passHref>
+                      <NavigationMenuLink
+                        asChild
+                        className={`${navigationMenuTriggerStyle()} `}
+                      >
+                        <Button variant={'ghost'}>
+                          <span className="flex items-center cursor-pointer">
+                            {route.title}
+                          </span>
+                        </Button>
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
         </div>
 
-        <div className="flex w-1/" suppressHydrationWarning>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="outline" className="shadow-sm mr-1">
-                All <ChevronDown size={9} />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent>
-              <p className="text-foreground">Here is your content</p>
-            </PopoverContent>
-          </Popover>
+        <div className="flex items-center gap-4 grow justify-end">
+        <div className="grow flex justify-center px-4">
           <InputGroup className="max-w-xs shadow-md">
             <InputGroupInput
               placeholder="Search Kuore..."
               className="placeholder:text-muted-foreground"
-              onChange={(e) => setSearch(e.target.value)}
             />
             <InputGroupAddon>
               <Search size={18} />
             </InputGroupAddon>
-            <InputGroupAddon align="inline-end">
-              {search ? "0 results" : ""}
-            </InputGroupAddon>
           </InputGroup>
-          <div className="w-8" />
         </div>
-
-        <div className="flex items-center border rounded-md bg-background/40 overflow-hidden shadow-md p-1 gap-2">
           <ThemeToggle />
-        </div>
-
-        <div className="w-1/6 flex items-center gap-2">
-          {userLogged && (
-            <Button onClick={handleCerrarSesion}>Cerrar Sesión</Button>
-          )}
-          <Button variant="outline" size="icon" className="shadow-sm">
-            <BadgePlus size={18} />
-          </Button>
-          <Button variant="outline" size="icon" className="shadow-sm">
-            <CircleQuestionMark size={18} />
-          </Button>
-          <Button variant="outline" size="icon" className="shadow-sm">
-            <Cog size={18} />
-          </Button>
-          <Button variant="outline" size="icon" className="shadow-sm">
-            <Bell size={18} />
-          </Button>
-          <Button variant="outline" size="icon" className="shadow-sm">
-            <CircleUser size={18} />
-          </Button>
+          <div className="flex items-center gap-2">
+            {userLogged && (
+              <Button onClick={handleCerrarSesion} variant="outline" className="bg-black text-white dark:bg-white dark:text-black hover:bg-black/80 dark:hover:bg-white/80">Cerrar Sesión</Button>
+            )}
+            <Button variant="outline" size="icon"><BadgePlus size={18} /></Button>
+            <Button variant="outline" size="icon"><CircleQuestionMark size={18} /></Button>
+            <Button variant="outline" size="icon"><Cog size={18} /></Button>
+            <Button variant="outline" size="icon"><Bell size={18} /></Button>
+            <Button variant="outline" size="icon"><CircleUser size={18} /></Button>
+          </div>
         </div>
       </div>
 
-      <div className="flex justify-start items-center w-full gap-4">
-        <Grip className="text-foreground cursor-pointer" size={20} />
-        <NavigationMenu>
-          <NavigationMenuList>
-            {routes.map((route) => (
-              <NavigationMenuItem key={route.title}>
-                <Link href={route.href} passHref>
-                  <NavigationMenuLink
-                    asChild
-                    className={`${navigationMenuTriggerStyle()} `}
-                  >
-                    <Button variant={'ghost'}>
-                      <span className="flex items-center cursor-pointer">
-                        {route.title}
-                        <ChevronDown size={16} className="ml-1" />
-                      </span>
-                    </Button>
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+      {/* Responsive Navbar for mobile */}
+      <div className="md:hidden flex items-center justify-between w-full px-3 py-2 gap-2">
+        <HeartPulse className="text-destructive" size={32} />
+        <div className="flex items-center gap-1 shrink-0">
+          <ThemeToggle />
+          <Button variant="ghost" size="icon" onClick={() => setOpenMenu(!openMenu)}>
+            <Grip size={20} />
+          </Button>
+          <Button variant="ghost" size="icon">
+            <CircleUser size={20} />
+          </Button>
+        </div>
       </div>
+      
+      {openMenu && (
+        <div className="md:hidden flex flex-col w-full px-4 pb-3 gap-2 border-t border-border">
+          {routes.map((route) => (
+            <Link key={route.title} href={route.href} passHref>
+              <Button variant="ghost" className="w-full justify-start">
+                {route.title}
+              </Button>
+            </Link>
+          ))}
+        </div>
+      )}
     </nav>
   );
 };

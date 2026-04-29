@@ -35,7 +35,7 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
   return (
     <>
       {userLogged && <Navbar />}
-      <main className="w-full h-full bg-background text-foreground">{children}</main>
+      <main className="w-full h-full bg-background text-foreground overflow-x-hidden">{children}</main>
     </>
   );
 }

@@ -83,37 +83,35 @@ const AccountsPage = () => {
   ];
 
   const actions = (
-    <div className="flex items-center gap-2">
-      <div className="flex items-center border border-border rounded-md bg-background overflow-hidden shadow-sm mr-2">
+    <div className="flex flex-wrap items-center gap-2">
+      <div className="flex items-center border border-border rounded-md bg-background overflow-hidden shadow-sm">
         <Button
           variant="ghost"
-          className="h-8 px-3 text-xs font-semibold border-r border-border rounded-md"
+          className="h-8 px-3 text-xs font-semibold"
         >
           <Plus className="mr-2 h-4 w-4" />
           Follow
         </Button>
       </div>
 
-      <div className="flex items-center gap-1">
-        <Button variant="outline" className="h-8 shadow-sm">
-          Create Tasks for Contacts
+      <div className="flex flex-wrap items-center gap-1">
+        <Button variant="outline" size="sm" className="h-8 shadow-sm text-xs">
+          Create Tasks
         </Button>
-        <Button variant="outline" className="h-8 shadow-sm">
+        <Button variant="outline" size="sm" className="h-8 shadow-sm text-xs">
           New Contact
         </Button>
-        <Button variant="outline" className="h-8 shadow-sm">
+        <Button variant="outline" size="sm" className="h-8 shadow-sm text-xs">
           New Case
         </Button>
 
-        <div className="flex items-center border border-border rounded-md bg-background shadow-sm ml-1 overflow-hidden">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-8 w-8 rounded-none bg-muted border-r border-border"
-          >
-            <ChevronDown size={16} />
-          </Button>
-        </div>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-8 w-8 rounded-md border border-border"
+        >
+          <ChevronDown size={16} />
+        </Button>
       </div>
     </div>
   );
@@ -129,14 +127,14 @@ const AccountsPage = () => {
           colorClass="bg-blue-500 dark:bg-blue-600"
         />
 
-        <div className="bg-muted px-6 py-3">
-          <div className="flex justify-start items-center align-middle gap-16">
+        <div className="bg-muted px-4 py-3 overflow-x-auto">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-2 min-w-max">
             {accountData.map((item) => (
               <div
                 key={item.label}
-                className="flex flex-col gap-1 cursor-pointer hover:text-primary transition-colors"
+                className="flex flex-col gap-0.5 cursor-pointer hover:text-primary transition-colors"
               >
-                <span className="text-xs text-muted-foreground font-medium">
+                <span className="text-[10px] text-muted-foreground font-semibold uppercase">
                   {item.label}
                 </span>
                 <span className="text-sm font-semibold text-foreground">

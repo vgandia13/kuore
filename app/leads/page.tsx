@@ -68,52 +68,52 @@ const LeadPage = () => {
       <LeadHeader layoutMode={layoutMode} setLayoutMode={setLayoutMode} />
 
       {/* Stats bar — mantiene su identidad visual de color marca */}
-      <div className="flex items-center justify-between bg-blue-800  dark:bg-blue-950 text-white px-8 py-4 overflow-x-auto">
+      <div className="flex flex-wrap items-center justify-start bg-blue-800 dark:bg-blue-950 text-white px-4 py-2 gap-2">
         {stats.map((stat, i) => (
           <div
             key={i}
-            className="hover:bg-blue-700/50 rounded-md p-2 transition-colors cursor-pointer px-5"
+            className="hover:bg-blue-700/50 rounded-md p-2 transition-colors cursor-pointer px-3 min-w-[100px]"
           >
-            <p className="text-xs text-blue-200 uppercase font-semibold">
+            <p className="text-[10px] text-blue-200 uppercase font-semibold">
               {stat.label}
             </p>
-            <p className="text-xl font-bold">{stat.value}</p>
+            <p className="text-lg font-bold">{stat.value}</p>
           </div>
         ))}
       </div>
 
-      <div className="flex items-center w-full justify-between p-3 bg-muted border-b border-border">
-        <div className="ml-2 flex items-center gap-2 text-sm text-muted-foreground">
+      <div className="flex items-center w-full justify-between p-3 bg-muted border-b border-border flex-wrap gap-2">
+        <div className="ml-2 flex items-center gap-2 text-sm text-muted-foreground flex-wrap">
           <span className="font-medium text-foreground">3 items</span>
           <span className="text-muted-foreground" aria-hidden="true">•</span>
           <span>Filtered by Created Date, Me, Total leads</span>
         </div>
 
-        <div className="border border-border rounded-full flex items-center bg-background overflow-hidden shadow-sm">
+        <div className="border border-border rounded-full flex items-center bg-background overflow-hidden shadow-sm flex-wrap">
           <Button
             variant="link"
-            className="text-blue-500 px-4 h-9 hover:no-underline hover:bg-muted"
+            className="text-blue-500 px-3 h-9 hover:no-underline hover:bg-muted"
           >
             Add to campaign
           </Button>
-          <span className="h-6 border-r border-border" aria-hidden="true" />
+          <span className="h-6 border-r border-border hidden sm:block" aria-hidden="true" />
           <Button
             variant="link"
-            className="text-blue-500 px-4 h-9 hover:no-underline hover:bg-muted"
+            className="text-blue-500 px-3 h-9 hover:no-underline hover:bg-muted"
           >
             Change Status
           </Button>
-          <span className="h-6 border-r border-border" aria-hidden="true" />
+          <span className="h-6 border-r border-border hidden sm:block" aria-hidden="true" />
           <Button
             variant="link"
-            className="text-blue-500 px-4 h-9 hover:no-underline hover:bg-muted"
+            className="text-blue-500 px-3 h-9 hover:no-underline hover:bg-muted"
           >
             Change Owner
           </Button>
-          <span className="h-6 border-r border-border" aria-hidden="true" />
+          <span className="h-6 border-r border-border hidden sm:block" aria-hidden="true" />
           <Button
             variant="link"
-            className="text-blue-500 px-4 h-9 hover:no-underline hover:bg-muted"
+            className="text-blue-500 px-3 h-9 hover:no-underline hover:bg-muted"
           >
             Assign
           </Button>
@@ -122,8 +122,8 @@ const LeadPage = () => {
 
       <div className="p-4">
         {layoutMode === "table" ? (
-          <div className="rounded-lg border border-border overflow-hidden shadow-sm">
-            <Table className="border-collapse [&_th]:border [&_td]:border [&_th]:border-border [&_td]:border-border">
+        <div className="rounded-lg border border-border overflow-x-auto shadow-sm">
+          <Table className="border-collapse [&_th]:border [&_td]:border [&_th]:border-border [&_td]:border-border min-w-[600px]">
               <TableHeader className="bg-muted">
                 <TableRow>
                   {["Name", "Title", "Company", "Status", "Source", "Last Activity"].map(
