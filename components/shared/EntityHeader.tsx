@@ -6,8 +6,6 @@ interface EntityHeaderProps {
   subtitle: string;
   actions?: React.ReactNode;
   tabs?: React.ReactNode;
-  // Usamos colores de Tailwind que mapean a variables globales (ej. primary)
-  // o colores específicos si es necesario.
   colorClass?: string;
 }
 

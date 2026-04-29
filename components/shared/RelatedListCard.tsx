@@ -14,28 +14,28 @@ import {
   TableRow 
 } from "@/components/ui/table";
 
-interface ColumnDef {
+interface ColumnDef<T> {
   header: string;
-  accessorKey: string; 
+  accessorKey: keyof T; 
 }
 
-interface RelatedListCardProps {
+interface RelatedListCardProps<T> {
   title: string;
   count: number;
   icon: React.ReactNode;
   action?: React.ReactNode;
-  data: any[]; 
-  columns: ColumnDef[];
+  data: T[]; 
+  columns: ColumnDef<T>[];
 }
 
-const RelatedListCard = ({ 
+const RelatedListCard = <T,>({ 
   title, 
   count, 
   icon, 
   action, 
   data, 
   columns 
-}: RelatedListCardProps) => {
+}: RelatedListCardProps<T>) => {
   return (
     <Card className="shadow-sm">
       <CardHeader className="flex flex-row items-center justify-between py-3 px-4 border-b">
@@ -60,19 +60,19 @@ const RelatedListCard = ({
           <Table>
             <TableHeader>
               <TableRow>
-                {columns.map((col) => (
-                  <TableHead key={col.accessorKey} className="text-xs">
+                {columns.map((col: ColumnDef<T>) => (
+                  <TableHead key={col.accessorKey as string} className="text-xs">
                     {col.header}
                   </TableHead>
                 ))}
               </TableRow>
             </TableHeader>
             <TableBody>
-              {data.map((row, rowIndex) => (
+              {data.map((row: T, rowIndex: number) => (
                 <TableRow key={rowIndex}>
-                  {columns.map((col) => (
-                    <TableCell key={col.accessorKey} className="text-sm py-2">
-                      {row[col.accessorKey] || "-"}
+                  {columns.map((col: ColumnDef<T>) => (
+                    <TableCell key={col.accessorKey as string} className="text-sm py-2">
+                      {String(row[col.accessorKey] ?? "-")}
                     </TableCell>
                   ))}
                 </TableRow>
