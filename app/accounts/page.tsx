@@ -1,4 +1,4 @@
-import { Building, ChevronDown, Plus, User } from "lucide-react";
+import { Building, ChevronDown, Crown, Plus, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EntityHeader } from "@/components/shared/EntityHeader";
 import RelatedListCard from "@/components/shared/RelatedListCard";
@@ -19,7 +19,29 @@ const AccountsPage = () => {
     { id: 3, name: "Tim Cheese", title: "Engineer", email: "tim@example.com" },
   ];
 
+  const opportunitiesData = [
+    {
+      stage: "Qualification",
+      name: "John Doe",
+      title: "Sales Assistant",
+      email: "mark@example.com",
+    },
+    {
+      stage: "Qualification",
+      name: "Michael Mouse",
+      title: "CEO",
+      email: "mike@example.com",
+    },
+  ];
+
   const contacsColumn = [
+    { header: "Name", accessorKey: "name" },
+    { header: "Title", accessorKey: "title" },
+    { header: "Email", accessorKey: "email" },
+  ];
+
+  const opportunitiesColumn = [
+    { header: "Stage", accessorKey: "stage" },
     { header: "Name", accessorKey: "name" },
     { header: "Title", accessorKey: "title" },
     { header: "Email", accessorKey: "email" },
@@ -92,14 +114,30 @@ const AccountsPage = () => {
       </div>
       <div className="h-2 bg-blue-600" />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 bg-muted/30">
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 flex flex-col gap-4">
           <RelatedListCard
             title={"Contacts"}
             count={contactsData.length}
             icon={<User size={18} />}
-            action={<Button variant="outline" size={'sm'}>New</Button>}
+            action={
+              <Button variant="outline" size={"sm"}>
+                New
+              </Button>
+            }
             data={contactsData}
             columns={contacsColumn}
+          />
+          <RelatedListCard
+            title={`Opportunities`}
+            count={opportunitiesData.length}
+            icon={<Crown size={18} />}
+            action={
+              <Button variant="outline" size={"sm"}>
+                New
+              </Button>
+            }
+            data={opportunitiesData}
+            columns={opportunitiesColumn}
           />
         </div>
         <div className="lg:cols-span-1"></div>
