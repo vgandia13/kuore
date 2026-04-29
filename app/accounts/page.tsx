@@ -194,12 +194,12 @@ const AccountsPage = () => {
                   <TabsTrigger value="email">Email</TabsTrigger>
                 </TabsList>
                 <TabsContent value="newTask">
-                  <div className="p-4 bg-background border rounded-lg">
+                  <div className="bg-background border rounded-lg">
                     <Card className="w-full">
                       <CardHeader>
-                        <InputGroup className="p-1">
+                        <InputGroup >
                           <InputGroupInput placeholder="Create a Task..." />
-                          <InputGroupButton className="bg-blue-300">
+                          <InputGroupButton className="bg-blue-300 dark:bg-blue-900">
                             Add
                           </InputGroupButton>
                         </InputGroup>
@@ -217,12 +217,20 @@ const AccountsPage = () => {
                             />
                           </Button>
                         </div>
-                        <Accordion type="single" defaultValue="upcoming" collapsible>
+                        <Accordion
+                          type="single"
+                          defaultValue="upcoming"
+                          collapsible
+                          className="w-full"
+                        >
                           <AccordionItem value="upcoming">
-                            <AccordionTrigger>
-                              <ChevronDown size={20} /> Upcoming & Overdue
+                            <AccordionTrigger className="hover:no-underline ml-2">
+                              Upcoming & Overdue
                             </AccordionTrigger>
-                            <AccordionContent>No next steps. <br/> To get things moving, add a task or set up a meeting.</AccordionContent>
+                            <AccordionContent className="h-full border-b flex flex-col items-center">
+                              <span className="font-light">No next steps.</span><span className="font-light">To get things moving, add a
+                              task or set up a meeting.</span>
+                            </AccordionContent>
                           </AccordionItem>
                         </Accordion>
                       </CardContent>
