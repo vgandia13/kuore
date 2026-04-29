@@ -3,12 +3,21 @@ import { Button } from "@/app/components/ui/button";
 import { EntityHeader } from "@/app/components/shared/EntityHeader";
 
 const AccountsPage = () => {
+  const accountData = [
+    { label: "Type", value: "Customer-Direct" },
+    { label: "Phone", value: "(336) 222-7000" },
+    { label: "Website", value: "www.burlington.com" },
+    { label: "Account Owner", value: "Brian Hays" },
+    { label: "Account Site", value: "-" },
+    { label: "Industry", value: "Apparel" },
+  ];
+
   const actions = (
     <div className="flex items-center gap-2">
       <div className="flex items-center border border-border rounded-md bg-background overflow-hidden shadow-sm mr-2">
         <Button
           variant="ghost"
-          className="h-8 font-semibold border-r border-border rounded-none"
+          className="h-8 px-10 text-xs font-semibold border-r border-border rounded-none"
         >
           <Plus className="mr-2 h-4 w-4" />
           Follow
@@ -50,31 +59,20 @@ const AccountsPage = () => {
       />
 
       <div className="bg-muted px-6 py-3">
-        <div className="flex align-middle justify-start gap-15">
-          <div className="flex flex-col  cursor-pointer hover:text-primary transition-colors">
-            <span className="text-xs text-muted-foreground font-medium">Type</span>
-            <span className="text-sm font-semibold text-foreground">Customer-Direct</span>
-          </div>
-          <div className="flex flex-col cursor-pointer hover:text-primary transition-colors">
-            <span className="text-xs text-muted-foreground font-medium">Phone</span>
-            <span className="text-sm font-semibold text-foreground">(336) 222-7000</span>
-          </div>
-          <div className="flex flex-col cursor-pointer hover:text-primary transition-colors">
-            <span className="text-xs text-muted-foreground font-medium">Website</span>
-            <span className="text-sm font-semibold text-foreground">www.burlington.com</span>
-          </div>
-          <div className="flex flex-col cursor-pointer hover:text-primary transition-colors">
-            <span className="text-xs text-muted-foreground font-medium">Account Owner</span>
-            <span className="text-sm font-semibold text-foreground">Brian Hays</span>
-          </div>
-          <div className="flex flex-col cursor-pointer hover:text-primary transition-colors">
-            <span className="text-xs text-muted-foreground font-medium">Account Site</span>
-            <span className="text-sm font-semibold text-foreground">-</span>
-          </div>
-          <div className="flex flex-col cursor-pointer hover:text-primary transition-colors">
-            <span className="text-xs text-muted-foreground font-medium">Industry</span>
-            <span className="text-sm font-semibold text-foreground">Apparel</span>
-          </div>
+        <div className="flex justify-start items-center align-middle gap-16">
+          {accountData.map((item) => (
+            <div
+              key={item.label}
+              className="flex flex-col gap-1 cursor-pointer hover:text-primary transition-colors"
+            >
+              <span className="text-xs text-muted-foreground font-medium">
+                {item.label}
+              </span>
+              <span className="text-sm font-semibold text-foreground">
+                {item.value}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
