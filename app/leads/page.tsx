@@ -22,15 +22,7 @@ import { Button } from "@/components/ui/button";
 
 const LeadPage = () => {
   const [layoutMode, setLayoutMode] = useState<"table" | "grid">("table");
-  const stats = [
-    { label: "Total leads", value: 0 },
-    { label: "No activity", value: 0 },
-    { label: "Idle", value: 0 },
-    { label: "No upcoming", value: 0 },
-    { label: "Overdue", value: 0 },
-    { label: "Due today", value: 0 },
-    { label: "Upcoming", value: 0 },
-  ];
+  
 
   const leads = [
     {
@@ -60,6 +52,15 @@ const LeadPage = () => {
       leadSource: "Trade Show",
       lastActivity: "4/18/2025",
     },
+  ];
+  const stats = [
+      { label: "Total leads", value: leads.length },
+      { label: "No activity", value: 0 },
+      { label: "Idle", value: 0 },
+      { label: "No upcoming", value: 0 },
+      { label: "Overdue", value: 0 },
+      { label: "Due today", value: 0 },
+      { label: "Upcoming", value: 0 },
   ];
 
   return (
@@ -185,7 +186,7 @@ const LeadPage = () => {
                 className="hover:shadow-md transition-shadow"
               >
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-lg text-blue-500 cursor-pointer hover:underline">
+                  <CardTitle className="text-lg font-bold text-blue-500 cursor-pointer hover:underline">
                     {lead.name}
                   </CardTitle>
                 </CardHeader>

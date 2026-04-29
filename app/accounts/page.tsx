@@ -2,6 +2,8 @@ import { Building, ChevronDown, Crown, Plus, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EntityHeader } from "@/components/shared/EntityHeader";
 import RelatedListCard from "@/components/shared/RelatedListCard";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card } from "@/components/ui/card";
 
 const AccountsPage = () => {
   const accountData = [
@@ -113,34 +115,110 @@ const AccountsPage = () => {
         </div>
       </div>
       <div className="h-2 bg-blue-600 dark:bg-blue-700/80" />
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 bg-muted/30">
-        <div className="lg:col-span-2 flex flex-col gap-4">
-          <RelatedListCard
-            title={"Contacts"}
-            count={contactsData.length}
-            icon={<User size={18} />}
-            action={
-              <Button variant="outline" size={"sm"}>
-                New
-              </Button>
-            }
-            data={contactsData}
-            columns={contacsColumn}
-          />
-          <RelatedListCard
-            title={`Opportunities`}
-            count={opportunitiesData.length}
-            icon={<Crown size={18} />}
-            action={
-              <Button variant="outline" size={"sm"}>
-                New
-              </Button>
-            }
-            data={opportunitiesData}
-            columns={opportunitiesColumn}
-          />
+      <div className="p-4 bg-muted/30 grid grid-cols-1 lg:grid-cols-3 gap-4">
+        {/* Columna izquierda: Ocupa 2 columnas, contiene Tabs (Related, Details, News) */}
+        <div className="lg:col-span-2">
+          <Tabs defaultValue="related" className="w-full">
+            <TabsList className="border border-border/30 mb-4">
+              <TabsTrigger value="related">Related</TabsTrigger>
+              <TabsTrigger value="details">Details</TabsTrigger>
+              <TabsTrigger value="news">News</TabsTrigger>
+            </TabsList>
+            <TabsContent value="related" className="flex flex-col gap-4">
+              <RelatedListCard
+                title={"Contacts"}
+                count={contactsData.length}
+                icon={<User size={18} />}
+                action={
+                  <Button variant="outline" size={"sm"}>
+                    New
+                  </Button>
+                }
+                data={contactsData}
+                columns={contacsColumn}
+              />
+              <RelatedListCard
+                title={`Opportunities`}
+                count={opportunitiesData.length}
+                icon={<Crown size={18} />}
+                action={
+                  <Button variant="outline" size={"sm"}>
+                    New
+                  </Button>
+                }
+                data={opportunitiesData}
+                columns={opportunitiesColumn}
+              />
+            </TabsContent>
+            <TabsContent value="details">
+              <div className="p-4 bg-background border rounded-lg">
+                <p className="text-muted-foreground">
+                  Details information will be displayed here.
+                </p>
+              </div>
+            </TabsContent>
+            <TabsContent value="news">
+              <div className="p-4 bg-background border rounded-lg">
+                <p className="text-muted-foreground">
+                  News feed will be displayed here.
+                </p>
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
-        <div className="lg:cols-span-1"></div>
+
+        {/* Columna derecha: Ocupa 1 columna, contiene Tabs (Activity, Chatter) */}
+        <div className="lg:col-span-1">
+          <Tabs defaultValue="activity" className="w-full">
+            <TabsList className="border border-border/30 w-full justify-start mb-4">
+              <TabsTrigger value="activity">Activity</TabsTrigger>
+              <TabsTrigger value="chatter">Chatter</TabsTrigger>
+            </TabsList>
+            <TabsContent value="activity">
+              <Tabs defaultValue="newTask" className="w-full">
+                <TabsList className="border border-border/30 mb-4">
+                  <TabsTrigger value="newTask">New Task</TabsTrigger>
+                  <TabsTrigger value="logCall">Log a Call</TabsTrigger>
+                  <TabsTrigger value="newEvent">New Event</TabsTrigger>
+                  <TabsTrigger value="email">Email</TabsTrigger>
+                </TabsList>
+                <TabsContent value="newTask">
+                  <div className="p-4 bg-background border rounded-lg">
+                    <Card className="w-full"></Card>
+                  </div>
+                </TabsContent>
+                <TabsContent value="logCall">
+                  <div className="p-4 bg-background border rounded-lg">
+                    <p className="text-muted-foreground">
+                      Log a Call will be displayed here.
+                    </p>
+                  </div>
+                </TabsContent>
+                <TabsContent value="newEvent">
+                  <div className="p-4 bg-background border rounded-lg">
+                    <p className="text-muted-foreground">
+                      New Event will be displayed here.
+                    </p>
+                  </div>
+                </TabsContent>
+                <TabsContent value="email">
+                  <div className="p-4 bg-background border rounded-lg">
+                    <p className="text-muted-foreground">
+                      Email will be displayed here.
+                    </p>
+                  </div>
+                </TabsContent>
+              </Tabs>
+            </TabsContent>
+            <TabsContent value="chatter">
+              <div className="p-4 bg-background border rounded-lg">
+                <p className="text-muted-foreground text-sm">
+                  Chatter feed will be displayed here.
+                </p>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
       </div>
     </>
   );
