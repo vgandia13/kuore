@@ -1,4 +1,5 @@
-import { Building, ChevronDown, Crown, Plus, User, Funnel } from "lucide-react";
+import { ColumnDef } from "@/components/shared/RelatedListCard";
+import { ChevronDown, Plus, Building, User, Crown, Funnel } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EntityHeader } from "@/components/shared/EntityHeader";
 import RelatedListCard from "@/components/shared/RelatedListCard";
@@ -166,7 +167,7 @@ const AccountsPage = () => {
                   </Button>
                 }
                 data={contactsData}
-                columns={contacsColumn}
+                columns={contacsColumn as ColumnDef}
               />
               <RelatedListCard
                 title={`Opportunities`}

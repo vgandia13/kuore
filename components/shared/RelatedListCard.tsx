@@ -14,7 +14,7 @@ import {
   TableRow 
 } from "@/components/ui/table";
 
-interface ColumnDef<T> {
+export interface ColumnDef<T> {
   header: string;
   accessorKey: keyof T; 
 }
