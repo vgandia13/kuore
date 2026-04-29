@@ -23,7 +23,7 @@ import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import Link from "next/link";
-import { useData } from "../contexts/AppContext";
+import { useData } from "../app/contexts/AppContext";
 import { toast } from "sonner";
 import { ThemeToggle } from "./ThemeToggle";
 

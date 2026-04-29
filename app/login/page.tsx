@@ -6,17 +6,17 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "@/app/components/ui/card";
-import { Input } from "@/app/components/ui/input";
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/app/components/ui/input-group";
+} from "@/components/ui/input-group";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useData } from "../contexts/AppContext";
-import { Button } from "@/app/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Image from "next/image";

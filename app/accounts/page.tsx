@@ -1,6 +1,6 @@
 import { Building, ChevronDown, Plus } from "lucide-react";
-import { Button } from "@/app/components/ui/button";
-import { EntityHeader } from "@/app/components/shared/EntityHeader";
+import { Button } from "@/components/ui/button";
+import { EntityHeader } from "@/components/shared/EntityHeader";
 
 const AccountsPage = () => {
   const accountData = [
@@ -78,7 +78,10 @@ const AccountsPage = () => {
         </div>
       </div>
       <div className="h-2 bg-blue-600"/>
-      
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 bg-muted/30">
+        <div className="lg:col-span-2"></div>
+        <div className="lg:cols-span-1"></div>
+      </div>
     </>
   );
 };

@@ -8,8 +8,8 @@ import {
   TableProperties,
   Pencil,
 } from "lucide-react";
-import { Button } from "@/app/components/ui/button";
-import { EntityHeader } from "@/app/components/shared/EntityHeader";
+import { Button } from "@/components/ui/button";
+import { EntityHeader } from "@/components/shared/EntityHeader";
 
 const LeadHeader = () => {
   const actions = (

@@ -3,9 +3,9 @@ import { Geist, Reddit_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { AppProvider } from "./contexts/AppContext";
-import LayoutContent from "./components/LayoutContent";
+import LayoutContent from "@/components/LayoutContent";
 import { Toaster } from "sonner";
-import { ThemeProvider } from "./components/theme-provider";
+import { ThemeProvider } from "../components/theme-provider";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 

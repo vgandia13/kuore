@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import { useData } from "../contexts/AppContext";
-import Navbar from "./Navbar";
+import { useData } from "../app/contexts/AppContext";
+import Navbar from "@/components/Navbar";
 import { usePathname, useRouter } from "next/navigation";
 
 export default function LayoutContent({ children }: { children: React.ReactNode }) {
