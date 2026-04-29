@@ -8,7 +8,7 @@ interface EntityHeaderProps {
   tabs?: React.ReactNode;
   // Usamos colores de Tailwind que mapean a variables globales (ej. primary)
   // o colores específicos si es necesario.
-  colorClass?: string; 
+  colorClass?: string;
 }
 
 export const EntityHeader = ({
@@ -23,10 +23,16 @@ export const EntityHeader = ({
     <div className="w-full bg-background">
       <div className={`w-full ${colorClass} h-2`} />
 
-      <div className="flex items-center justify-between bg-muted p-3 border-b border-border shadow-sm">
+      <div className="flex items-center justify-between bg-muted p-4 border-b border-border shadow-sm">
         <div className="flex items-center gap-3">
-          <div className={`${colorClass} dark:opacity-80 p-1.5 rounded-lg flex items-center justify-center shadow-sm`}>
-            {React.cloneElement(icon as React.ReactElement, { className: "text-white", size: 24 })}
+          <div
+            className={`${colorClass} dark:opacity-80 p-1.5 rounded-lg flex items-center justify-center shadow-sm`}
+          >
+            {React.isValidElement(icon) &&
+              React.cloneElement(icon, {
+                className: "text-white",
+                size: 24,
+              } as React.SVGAttributes<SVGElement>)}
           </div>
           <div className="flex flex-col">
             <span className="text-xs font-medium text-muted-foreground leading-tight">
