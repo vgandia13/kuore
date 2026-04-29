@@ -47,6 +47,21 @@ const AccountsPage = () => {
     },
   ];
 
+  const casesData = [
+    {
+      stage: "Qualification",
+      name: "John Doe",
+      title: "Sales Assistant",
+      email: "mark@example.com",
+    },
+    {
+      stage: "Qualification",
+      name: "Michael Mouse",
+      title: "CEO",
+      email: "mike@example.com",
+    },
+  ];
+
   const contacsColumn = [
     { header: "Name", accessorKey: "name" },
     { header: "Title", accessorKey: "title" },
@@ -54,6 +69,13 @@ const AccountsPage = () => {
   ];
 
   const opportunitiesColumn = [
+    { header: "Stage", accessorKey: "stage" },
+    { header: "Name", accessorKey: "name" },
+    { header: "Title", accessorKey: "title" },
+    { header: "Email", accessorKey: "email" },
+  ];
+
+  const casesColumn = [
     { header: "Stage", accessorKey: "stage" },
     { header: "Name", accessorKey: "name" },
     { header: "Title", accessorKey: "title" },
@@ -160,6 +182,18 @@ const AccountsPage = () => {
                 data={opportunitiesData}
                 columns={opportunitiesColumn}
               />
+              <RelatedListCard
+                title={`Cases`}
+                count={casesData.length}
+                icon={<Funnel size={18} />}
+                action={
+                  <Button variant="outline" size={"sm"}>
+                    New
+                  </Button>
+                }
+                data={casesData}
+                columns={casesColumn}
+              />
             </TabsContent>
             <TabsContent value="details">
               <div className="p-4 bg-background border rounded-lg">
@@ -197,9 +231,9 @@ const AccountsPage = () => {
                   <div className="bg-background border rounded-lg">
                     <Card className="w-full">
                       <CardHeader>
-                        <InputGroup >
+                        <InputGroup>
                           <InputGroupInput placeholder="Create a Task..." />
-                          <InputGroupButton className="bg-blue-300 dark:bg-blue-900">
+                          <InputGroupButton className="bg-blue-300 dark:bg-blue-900 mr-0.5">
                             Add
                           </InputGroupButton>
                         </InputGroup>
@@ -227,9 +261,14 @@ const AccountsPage = () => {
                             <AccordionTrigger className="hover:no-underline ml-2">
                               Upcoming & Overdue
                             </AccordionTrigger>
-                            <AccordionContent className="h-full border-b flex flex-col items-center">
-                              <span className="font-light">No next steps.</span><span className="font-light">To get things moving, add a
-                              task or set up a meeting.</span>
+                            <AccordionContent className="h-full flex flex-col items-center">
+                              <span className="font-light opacity-60">
+                                No next steps.
+                              </span>
+                              <span className="font-light opacity-60">
+                                To get things moving, add a task or set up a
+                                meeting.
+                              </span>
                             </AccordionContent>
                           </AccordionItem>
                         </Accordion>
