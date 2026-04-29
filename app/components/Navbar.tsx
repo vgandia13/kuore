@@ -40,7 +40,7 @@ const Navbar = () => {
   const routes: { title: string; href: string }[] = [
     { title: "Home", href: "/home" },
     { title: "Leads", href: "/leads" },
-    { title: "Accounts", href: "#" },
+    { title: "Accounts", href: "/accounts" },
     { title: "Contacts", href: "#" },
     { title: "Opportunities", href: "#" },
   ];
