@@ -18,7 +18,12 @@ import {
 } from "@/components/ui/popover";
 import { useState } from "react";
 
-const LeadHeader = () => {
+interface LeadHeaderProps {
+  layoutMode: "table" | "grid";
+  setLayoutMode: (mode: "table" | "grid") => void;
+}
+
+const LeadHeader = ({ layoutMode, setLayoutMode }: LeadHeaderProps) => {
   const [view, setView] = useState("Recently Viewed");
 
   const actions = (
@@ -50,12 +55,28 @@ const LeadHeader = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="h-8 w-8 rounded-none bg-muted border-r border-border"
+            className={`h-8 w-8 rounded-none border-r border-border ${
+              layoutMode === "grid" ? "bg-muted" : ""
+            }`}
+            onClick={() => setLayoutMode("grid")}
           >
-            <Grid2X2 size={16} className="text-blue-500" />
+            <Grid2X2
+              size={16}
+              className={layoutMode === "grid" ? "text-blue-500" : "text-muted-foreground"}
+            />
           </Button>
-          <Button variant="ghost" size="icon" className="h-8 w-8 rounded-none">
-            <TableProperties size={16} className="text-muted-foreground" />
+          <Button
+            variant="ghost"
+            size="icon"
+            className={`h-8 w-8 rounded-none ${
+              layoutMode === "table" ? "bg-muted" : ""
+            }`}
+            onClick={() => setLayoutMode("table")}
+          >
+            <TableProperties
+              size={16}
+              className={layoutMode === "table" ? "text-blue-500" : "text-muted-foreground"}
+            />
           </Button>
         </div>
       </div>
