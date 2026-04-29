@@ -1,7 +1,6 @@
 import {
   PersonStanding,
   ChevronDown,
-  List,
   Settings,
   RotateCw,
   Grid2X2,
@@ -10,6 +9,11 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EntityHeader } from "@/components/shared/EntityHeader";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
 
 const LeadHeader = () => {
   const actions = (
@@ -53,28 +57,32 @@ const LeadHeader = () => {
     </>
   );
 
-  const tabs = (
-    <>
-      <div className="flex items-center gap-4 text-sm text-muted-foreground font-medium">
-        <span className="cursor-pointer border-b-2 border-primary text-primary pb-1">
-          All Leads
-        </span>
-        <span className="cursor-pointer hover:text-primary pb-1 transition-colors">My Leads</span>
-      </div>
-      <Button
-        variant="ghost"
-        size="sm"
-        className="text-xs text-primary hover:text-primary/90"
-      >
-        <List size={14} className="mr-1" /> List View
-      </Button>
-    </>
-  );
+  const tabs = <></>;
 
   return (
     <EntityHeader
       icon={<PersonStanding />}
-      title="Intelligence View"
+      title={
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant="ghost">
+              Lead View <ChevronDown size={9} />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent side="bottom" align="start" className="w-auto">
+            <div className="flex flex-col items-start justify-start">
+              <Button variant="ghost">All Open Leads</Button>
+              <Button variant="ghost">My Unread Leads</Button>
+              <Button variant="ghost">Recently Viewed <span className="opacity-50 text-xs">(Pinned List)</span></Button>
+              <Button variant="ghost">Recently Viewed Leads</Button>
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              <Button variant="ghost">Today's Leads</Button>
+              <Button variant="ghost">View - Custom 1</Button>
+              <Button variant="ghost">View - Custom 2</Button>
+            </div>
+          </PopoverContent>
+        </Popover>
+      }
       subtitle="Leads"
       actions={actions}
       tabs={tabs}

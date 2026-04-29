@@ -2,7 +2,7 @@ import React from "react";
 
 interface EntityHeaderProps {
   icon: React.ReactNode;
-  title: string;
+  title: string | React.ReactNode;
   subtitle: string;
   actions?: React.ReactNode;
   tabs?: React.ReactNode;

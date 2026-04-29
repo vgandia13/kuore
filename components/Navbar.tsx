@@ -46,8 +46,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="flex flex-col items-center w-full p-8 bg-muted border-b border-border sticky top-0 z-50">
-      <div className="flex items-start justify-between mb-4 w-full">
+    <nav className="flex flex-col items-center w-full pt-2 px-2 bg-muted border-b border-border sticky gap-1 top-0 z-50">
+      <div className="flex items-start justify-between w-full">
         <div className="w-1/3">
           <HeartPulse className="text-destructive" size={40} />
         </div>
