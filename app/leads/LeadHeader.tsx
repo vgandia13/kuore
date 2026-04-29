@@ -1,3 +1,5 @@
+"use client";
+
 import {
   PersonStanding,
   ChevronDown,
@@ -14,8 +16,11 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@/components/ui/popover";
+import { useState } from "react";
 
 const LeadHeader = () => {
+  const [view, setView] = useState("Recently Viewed");
+
   const actions = (
     <>
       <div className="flex items-center border border-border rounded-md bg-background overflow-hidden shadow-sm mr-2">
@@ -66,19 +71,50 @@ const LeadHeader = () => {
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="ghost">
-              Lead View <ChevronDown size={9} />
+              {view} <ChevronDown size={9} />
             </Button>
           </PopoverTrigger>
           <PopoverContent side="bottom" align="start" className="w-auto">
             <div className="flex flex-col items-start justify-start">
-              <Button variant="ghost">All Open Leads</Button>
-              <Button variant="ghost">My Unread Leads</Button>
-              <Button variant="ghost">Recently Viewed <span className="opacity-50 text-xs">(Pinned List)</span></Button>
-              <Button variant="ghost">Recently Viewed Leads</Button>
-              {/* eslint-disable-next-line react/no-unescaped-entities */}
-              <Button variant="ghost">Today's Leads</Button>
-              <Button variant="ghost">View - Custom 1</Button>
-              <Button variant="ghost">View - Custom 2</Button>
+              <Button variant="ghost" onClick={() => setView("All Open Leads")}>
+                All Open Leads
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => setView("My Unread Leads")}
+              >
+                My Unread Leads
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => setView("Recently Viewed")}
+              >
+                Recently Viewed
+                <span className="opacity-50 text-xs">(Pinned List)</span>
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => setView("Recently Viewed Leads")}
+              >
+                Recently Viewed Leads
+              </Button>
+
+              <Button variant="ghost" onClick={() => setView("Today's Leads")}>
+                {/* eslint-disable-next-line react/no-unescaped-entities */}
+                Today's Leads
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => setView("View - Custom 1")}
+              >
+                View - Custom 1
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => setView("View - Custom 2")}
+              >
+                View - Custom 2
+              </Button>
             </div>
           </PopoverContent>
         </Popover>
