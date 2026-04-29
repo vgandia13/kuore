@@ -17,7 +17,7 @@ const AccountsPage = () => {
       <div className="flex items-center border border-border rounded-md bg-background overflow-hidden shadow-sm mr-2">
         <Button
           variant="ghost"
-          className="h-8 px-10 text-xs font-semibold border-r border-border rounded-none"
+          className="h-8 px-3 text-xs font-semibold border-r border-border rounded-md"
         >
           <Plus className="mr-2 h-4 w-4" />
           Follow
@@ -49,33 +49,37 @@ const AccountsPage = () => {
   );
 
   return (
-    <div className="w-full bg-background">
-      <EntityHeader
-        icon={<Building />}
-        title="Burlington Textiles Corp of America"
-        subtitle="Accounts"
-        actions={actions}
-        colorClass="bg-blue-500 dark:bg-blue-600"
-      />
+    <>
+      <div className="w-full bg-background">
+        <EntityHeader
+          icon={<Building />}
+          title="Burlington Textiles Corp of America"
+          subtitle="Accounts"
+          actions={actions}
+          colorClass="bg-blue-500 dark:bg-blue-600"
+        />
 
-      <div className="bg-muted px-6 py-3">
-        <div className="flex justify-start items-center align-middle gap-16">
-          {accountData.map((item) => (
-            <div
-              key={item.label}
-              className="flex flex-col gap-1 cursor-pointer hover:text-primary transition-colors"
-            >
-              <span className="text-xs text-muted-foreground font-medium">
-                {item.label}
-              </span>
-              <span className="text-sm font-semibold text-foreground">
-                {item.value}
-              </span>
-            </div>
-          ))}
+        <div className="bg-muted px-6 py-3">
+          <div className="flex justify-start items-center align-middle gap-16">
+            {accountData.map((item) => (
+              <div
+                key={item.label}
+                className="flex flex-col gap-1 cursor-pointer hover:text-primary transition-colors"
+              >
+                <span className="text-xs text-muted-foreground font-medium">
+                  {item.label}
+                </span>
+                <span className="text-sm font-semibold text-foreground">
+                  {item.value}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+      <div className="h-2 bg-blue-600"/>
+      
+    </>
   );
 };
 
