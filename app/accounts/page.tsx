@@ -1,9 +1,20 @@
-import { Building, ChevronDown, Crown, Plus, User } from "lucide-react";
+import { Building, ChevronDown, Crown, Plus, User, Funnel } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EntityHeader } from "@/components/shared/EntityHeader";
 import RelatedListCard from "@/components/shared/RelatedListCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import {
+  InputGroup,
+  InputGroupInput,
+  InputGroupButton,
+} from "@/components/ui/input-group";
+import {
+  Accordion,
+  AccordionTrigger,
+  AccordionContent,
+  AccordionItem,
+} from "@/components/ui/accordion";
 
 const AccountsPage = () => {
   const accountData = [
@@ -184,7 +195,38 @@ const AccountsPage = () => {
                 </TabsList>
                 <TabsContent value="newTask">
                   <div className="p-4 bg-background border rounded-lg">
-                    <Card className="w-full"></Card>
+                    <Card className="w-full">
+                      <CardHeader>
+                        <InputGroup className="p-1">
+                          <InputGroupInput placeholder="Create a Task..." />
+                          <InputGroupButton className="bg-blue-300">
+                            Add
+                          </InputGroupButton>
+                        </InputGroup>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="flex items-center align-bottom justify-end gap-3">
+                          <span>
+                            Filters: All time • All activities • All types
+                          </span>
+                          <Button className="bg-background-muted border border-border py-0.5 px-2">
+                            <Funnel
+                              fill="muted-foreground"
+                              size={9}
+                              className="text-border dark:font-extrabold"
+                            />
+                          </Button>
+                        </div>
+                        <Accordion type="single" defaultValue="upcoming" collapsible>
+                          <AccordionItem value="upcoming">
+                            <AccordionTrigger>
+                              <ChevronDown size={20} /> Upcoming & Overdue
+                            </AccordionTrigger>
+                            <AccordionContent>No next steps. <br/> To get things moving, add a task or set up a meeting.</AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
+                      </CardContent>
+                    </Card>
                   </div>
                 </TabsContent>
                 <TabsContent value="logCall">
