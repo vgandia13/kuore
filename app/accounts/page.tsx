@@ -1,6 +1,7 @@
-import { Building, ChevronDown, Plus } from "lucide-react";
+import { Building, ChevronDown, Plus, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EntityHeader } from "@/components/shared/EntityHeader";
+import RelatedListCard from "@/components/shared/RelatedListCard";
 
 const AccountsPage = () => {
   const accountData = [
@@ -10,6 +11,18 @@ const AccountsPage = () => {
     { label: "Account Owner", value: "Brian Hays" },
     { label: "Account Site", value: "-" },
     { label: "Industry", value: "Apparel" },
+  ];
+
+  const contactsData = [
+    { id: 1, name: "Mark Steele", title: "CEO", email: "mark@example.com" },
+    { id: 2, name: "John Pork", title: "Manager", email: "pork@example.com" },
+    { id: 3, name: "Tim Cheese", title: "Engineer", email: "tim@example.com" },
+  ];
+
+  const contacsColumn = [
+    { header: "Name", accessorKey: "name" },
+    { header: "Title", accessorKey: "title" },
+    { header: "Email", accessorKey: "email" },
   ];
 
   const actions = (
@@ -77,9 +90,18 @@ const AccountsPage = () => {
           </div>
         </div>
       </div>
-      <div className="h-2 bg-blue-600"/>
+      <div className="h-2 bg-blue-600" />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 bg-muted/30">
-        <div className="lg:col-span-2"></div>
+        <div className="lg:col-span-2">
+          <RelatedListCard
+            title={"Contacts"}
+            count={contactsData.length}
+            icon={<User size={18} />}
+            action={<Button variant="outline" size={'sm'}>New</Button>}
+            data={contactsData}
+            columns={contacsColumn}
+          />
+        </div>
         <div className="lg:cols-span-1"></div>
       </div>
     </>
