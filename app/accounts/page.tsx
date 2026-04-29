@@ -47,7 +47,7 @@ const AccountsPage = () => {
             <Button variant="outline" className="h-8 shadow-sm">
               Create Tasks for Contacts
             </Button>
-            <Button variant="outline" className="h-8shadow-sm">
+            <Button variant="outline" className="h-8 shadow-sm">
               New Contact
             </Button>
             <Button variant="outline" className="h-8 shadow-sm">
@@ -61,7 +61,7 @@ const AccountsPage = () => {
                 className="h-8 w-8 rounded-none bg-muted border-r border-border"
               >
                 <ChevronDown size={16} />
-              </Button>
+              </Button> 
             </div>
           </div>
         </div>
