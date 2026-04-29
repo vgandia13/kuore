@@ -26,7 +26,7 @@ export const EntityHeader = ({
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-muted p-4 border-b border-border shadow-sm gap-4">
         <div className="flex items-center gap-3">
           <div
-            className={`${colorClass} dark:opacity-80 p-1.5 rounded-lg flex items-center justify-center shadow-sm flex-shrink-0`}
+            className={`${colorClass} dark:opacity-80 p-1.5 rounded-lg flex items-center justify-center shadow-sm shrink-0`}
           >
             {React.isValidElement(icon) &&
               React.cloneElement(icon, {
