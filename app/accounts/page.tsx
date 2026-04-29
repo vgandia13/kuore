@@ -253,7 +253,6 @@ const AccountsPage = () => {
                         </div>
                         <Accordion
                           type="single"
-                          defaultValue="upcoming"
                           collapsible
                           className="w-full"
                         >
