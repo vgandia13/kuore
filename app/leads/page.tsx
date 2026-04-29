@@ -9,20 +9,16 @@ import {
   TableRow,
   TableCell,
 } from "@/components/ui/table";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Bookmark, ChevronDown } from "lucide-react";
 import LeadHeader from "./LeadHeader";
 import { Button } from "@/components/ui/button";
 
 const LeadPage = () => {
-  const [layoutMode, setLayoutMode] = useState<"table" | "grid">("table");
-  
+  const [layoutMode, setLayoutMode] = useState<"table" | "grid">(() =>
+    typeof window != "undefined" && window.innerWidth < 768 ? "grid" : "table",
+  );
 
   const leads = [
     {
@@ -54,13 +50,13 @@ const LeadPage = () => {
     },
   ];
   const stats = [
-      { label: "Total leads", value: leads.length },
-      { label: "No activity", value: 0 },
-      { label: "Idle", value: 0 },
-      { label: "No upcoming", value: 0 },
-      { label: "Overdue", value: 0 },
-      { label: "Due today", value: 0 },
-      { label: "Upcoming", value: 0 },
+    { label: "Total leads", value: leads.length },
+    { label: "No activity", value: 0 },
+    { label: "Idle", value: 0 },
+    { label: "No upcoming", value: 0 },
+    { label: "Overdue", value: 0 },
+    { label: "Due today", value: 0 },
+    { label: "Upcoming", value: 0 },
   ];
 
   return (
@@ -72,7 +68,7 @@ const LeadPage = () => {
         {stats.map((stat, i) => (
           <div
             key={i}
-            className="hover:bg-blue-700/50 rounded-md p-2 transition-colors cursor-pointer px-3 min-w-[100px]"
+            className="hover:bg-blue-700/50 rounded-md p-2 transition-colors cursor-pointer px-3 min-w-25"
           >
             <p className="text-[10px] text-blue-200 uppercase font-semibold">
               {stat.label}
@@ -85,7 +81,9 @@ const LeadPage = () => {
       <div className="flex items-center w-full justify-between p-3 bg-muted border-b border-border flex-wrap gap-2">
         <div className="ml-2 flex items-center gap-2 text-sm text-muted-foreground flex-wrap">
           <span className="font-medium text-foreground">3 items</span>
-          <span className="text-muted-foreground" aria-hidden="true">•</span>
+          <span className="text-muted-foreground" aria-hidden="true">
+            •
+          </span>
           <span>Filtered by Created Date, Me, Total leads</span>
         </div>
 
@@ -96,21 +94,30 @@ const LeadPage = () => {
           >
             Add to campaign
           </Button>
-          <span className="h-6 border-r border-border hidden sm:block" aria-hidden="true" />
+          <span
+            className="h-6 border-r border-border hidden sm:block"
+            aria-hidden="true"
+          />
           <Button
             variant="link"
             className="text-blue-500 px-3 h-9 hover:no-underline hover:bg-muted"
           >
             Change Status
           </Button>
-          <span className="h-6 border-r border-border hidden sm:block" aria-hidden="true" />
+          <span
+            className="h-6 border-r border-border hidden sm:block"
+            aria-hidden="true"
+          />
           <Button
             variant="link"
             className="text-blue-500 px-3 h-9 hover:no-underline hover:bg-muted"
           >
             Change Owner
           </Button>
-          <span className="h-6 border-r border-border hidden sm:block" aria-hidden="true" />
+          <span
+            className="h-6 border-r border-border hidden sm:block"
+            aria-hidden="true"
+          />
           <Button
             variant="link"
             className="text-blue-500 px-3 h-9 hover:no-underline hover:bg-muted"
@@ -122,26 +129,35 @@ const LeadPage = () => {
 
       <div className="p-4">
         {layoutMode === "table" ? (
-        <div className="rounded-lg border border-border overflow-x-auto shadow-sm">
-          <Table className="border-collapse [&_th]:border [&_td]:border [&_th]:border-border [&_td]:border-border min-w-[600px]">
+          <div className="rounded-lg border border-border overflow-x-auto shadow-sm">
+            <Table className="border-collapse [&_th]:border [&_td]:border [&_th]:border-border [&_td]:border-border min-w-150">
               <TableHeader className="bg-muted">
                 <TableRow>
-                  {["Name", "Title", "Company", "Status", "Source", "Last Activity"].map(
-                    (h) => (
-                      <TableHead key={h} className="font-bold text-foreground">
-                        <div className="flex items-center gap-1 cursor-pointer hover:text-foreground/80">
-                          {h === "Title" && (
-                            <Bookmark
-                              fill="currentColor"
-                              className="text-muted-foreground mr-1"
-                              size={14}
-                            />
-                          )}
-                          {h} <ChevronDown size={14} className="text-muted-foreground" />
-                        </div>
-                      </TableHead>
-                    )
-                  )}
+                  {[
+                    "Name",
+                    "Title",
+                    "Company",
+                    "Status",
+                    "Source",
+                    "Last Activity",
+                  ].map((h) => (
+                    <TableHead key={h} className="font-bold text-foreground">
+                      <div className="flex items-center gap-1 cursor-pointer hover:text-foreground/80">
+                        {h === "Title" && (
+                          <Bookmark
+                            fill="currentColor"
+                            className="text-muted-foreground mr-1"
+                            size={14}
+                          />
+                        )}
+                        {h}{" "}
+                        <ChevronDown
+                          size={14}
+                          className="text-muted-foreground"
+                        />
+                      </div>
+                    </TableHead>
+                  ))}
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -181,10 +197,7 @@ const LeadPage = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {leads.map((lead) => (
-              <Card
-                key={lead.id}
-                className="hover:shadow-md transition-shadow"
-              >
+              <Card key={lead.id} className="hover:shadow-md transition-shadow">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-lg font-bold text-blue-500 cursor-pointer hover:underline">
                     {lead.name}
@@ -197,7 +210,9 @@ const LeadPage = () => {
                     <Badge variant="outline" className="font-normal">
                       {lead.leadStatus}
                     </Badge>
-                    <span className="text-sm text-muted-foreground">Last Activity: {lead.lastActivity}</span>
+                    <span className="text-sm text-muted-foreground">
+                      Last Activity: {lead.lastActivity}
+                    </span>
                   </div>
                 </CardContent>
               </Card>

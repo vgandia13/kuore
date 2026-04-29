@@ -146,7 +146,7 @@ const AccountsPage = () => {
         </div>
       </div>
       <div className="h-2 bg-blue-600 dark:bg-blue-700/80" />
-      <div className="p-4 bg-muted/30 grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="p-4 bg-muted/30 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {/* Columna izquierda: Ocupa 2 columnas, contiene Tabs (Related, Details, News) */}
         <div className="lg:col-span-2">
           <Tabs defaultValue="related" className="w-full">
@@ -211,7 +211,7 @@ const AccountsPage = () => {
         </div>
 
         {/* Columna derecha: Ocupa 1 columna, contiene Tabs (Activity, Chatter) */}
-        <div className="lg:col-span-1">
+        <div className="md:col-span-1">
           <Tabs defaultValue="activity" className="w-full">
             <TabsList className="border border-border/30 w-full justify-start mb-4">
               <TabsTrigger value="activity">Activity</TabsTrigger>
