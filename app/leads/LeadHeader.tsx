@@ -78,6 +78,7 @@ const LeadHeader = () => {
       subtitle="Leads"
       actions={actions}
       tabs={tabs}
+      colorClass="bg-blue-500 dark:bg-blue-600"
     />
   );
 };

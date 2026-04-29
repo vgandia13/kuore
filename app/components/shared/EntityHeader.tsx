@@ -25,8 +25,8 @@ export const EntityHeader = ({
 
       <div className="flex items-center justify-between bg-muted p-3 border-b border-border shadow-sm">
         <div className="flex items-center gap-3">
-          <div className={`${colorClass} p-1.5 rounded-lg flex items-center justify-center shadow-sm`}>
-            {React.cloneElement(icon as React.ReactElement, { className: "text-primary-foreground", size: 24 })}
+          <div className={`${colorClass} dark:opacity-80 p-1.5 rounded-lg flex items-center justify-center shadow-sm`}>
+            {React.cloneElement(icon as React.ReactElement, { className: "text-white", size: 24 })}
           </div>
           <div className="flex flex-col">
             <span className="text-xs font-medium text-muted-foreground leading-tight">
