@@ -112,7 +112,7 @@ const AccountsPage = () => {
           </div>
         </div>
       </div>
-      <div className="h-2 bg-blue-600" />
+      <div className="h-2 bg-blue-600 dark:bg-blue-700/80" />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 bg-muted/30">
         <div className="lg:col-span-2 flex flex-col gap-4">
           <RelatedListCard
