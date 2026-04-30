@@ -100,7 +100,7 @@ const LeadHeader = ({ layoutMode, setLayoutMode }: LeadHeaderProps) => {
       title={
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="ghost">
+            <Button variant="ghost" className="px-0 font-extrabold">
               {view} <ChevronDown size={9} />
             </Button>
           </PopoverTrigger>
