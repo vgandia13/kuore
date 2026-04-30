@@ -182,7 +182,7 @@ const ContactsPage = () => {
         </div>
 
         {/* Columna derecha: Ocupa 1 columna, contiene Tabs (Activity, Chatter) */}
-        <div className="md:col-span-1">
+        <div>
           <Tabs defaultValue="activity" className="w-full">
             <TabsList className="border border-border/30 w-full justify-start mb-4">
               <TabsTrigger value="activity">Activity</TabsTrigger>
@@ -225,10 +225,7 @@ const ContactsPage = () => {
                         Filters: All time • All activities • All types
                       </span>
                       <Button className="dark:bg-gray-500 border-border py-0.5 px-2">
-                        <Cog
-                          size={9}
-                          className="text-background"
-                        />
+                        <Cog size={9} className="text-background" />
                       </Button>
                     </div>
                     <div className="flex items-center align-bottom justify-end gap-3 my-2">
