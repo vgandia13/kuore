@@ -29,7 +29,7 @@ const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const { userLogged, setUserLogged } = useData();
 
-  const handleCerrarSesion = () => {
+  const handleLogout = () => {
     localStorage.removeItem("userLogged");
     setUserLogged(false);
     toast.success("Cierre de sesión exitoso");
@@ -60,7 +60,7 @@ const Navbar = () => {
                         asChild
                         className={`${navigationMenuTriggerStyle()} `}
                       >
-                        <Button variant={'ghost'}>
+                        <Button variant={"ghost"}>
                           <span className="flex items-center cursor-pointer">
                             {route.title}
                           </span>
@@ -75,27 +75,43 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4 grow justify-end">
-        <div className="grow flex justify-center px-4">
-          <InputGroup className="max-w-xs shadow-md">
-            <InputGroupInput
-              placeholder="Search Kuore..."
-              className="placeholder:text-muted-foreground"
-            />
-            <InputGroupAddon>
-              <Search size={18} />
-            </InputGroupAddon>
-          </InputGroup>
-        </div>
+          <div className="grow flex justify-center px-4">
+            <InputGroup className="max-w-xs shadow-md">
+              <InputGroupInput
+                placeholder="Search Kuore..."
+                className="placeholder:text-muted-foreground"
+              />
+              <InputGroupAddon>
+                <Search size={18} />
+              </InputGroupAddon>
+            </InputGroup>
+          </div>
           <ThemeToggle />
           <div className="flex items-center gap-2">
             {userLogged && (
-              <Button onClick={handleCerrarSesion} variant="outline" className="bg-black text-white dark:bg-white dark:text-black hover:bg-black/80 dark:hover:bg-white/80">Cerrar Sesión</Button>
+              <Button
+                onClick={handleLogout}
+                variant="outline"
+                className="bg-black text-white dark:bg-white dark:text-black hover:bg-black/80 dark:hover:bg-white/80"
+              >
+                Cerrar Sesión
+              </Button>
             )}
-            <Button variant="outline" size="icon"><BadgePlus size={18} /></Button>
-            <Button variant="outline" size="icon"><CircleQuestionMark size={18} /></Button>
-            <Button variant="outline" size="icon"><Cog size={18} /></Button>
-            <Button variant="outline" size="icon"><Bell size={18} /></Button>
-            <Button variant="outline" size="icon"><CircleUser size={18} /></Button>
+            <Button variant="outline" size="icon">
+              <BadgePlus size={18} />
+            </Button>
+            <Button variant="outline" size="icon">
+              <CircleQuestionMark size={18} />
+            </Button>
+            <Button variant="outline" size="icon">
+              <Cog size={18} />
+            </Button>
+            <Button variant="outline" size="icon">
+              <Bell size={18} />
+            </Button>
+            <Button variant="outline" size="icon">
+              <CircleUser size={18} />
+            </Button>
           </div>
         </div>
       </div>
@@ -105,7 +121,11 @@ const Navbar = () => {
         <HeartPulse className="text-destructive" size={32} />
         <div className="flex items-center gap-1 shrink-0">
           <ThemeToggle />
-          <Button variant="ghost" size="icon" onClick={() => setOpenMenu(!openMenu)}>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setOpenMenu(!openMenu)}
+          >
             <Grip size={20} />
           </Button>
           <Button variant="ghost" size="icon">
@@ -113,7 +133,7 @@ const Navbar = () => {
           </Button>
         </div>
       </div>
-      
+
       {openMenu && (
         <div className="md:hidden flex flex-col w-full px-4 pb-3 gap-2 border-t border-border">
           {routes.map((route) => (
