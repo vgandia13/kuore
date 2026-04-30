@@ -131,9 +131,10 @@ const LeadHeader = ({ layoutMode, setLayoutMode }: LeadHeaderProps) => {
 
               <Button
                 variant="ghost"
-                onClick={() => setView("Today&apos;s Leads")}
+                onClick={() => setView("Today's Leads")}
               >
-                Today&apos;s Leads
+                {/*eslint-disable-next-line react/no-unescaped-entities*/}
+                Today's Leads
               </Button>
               <Button
                 variant="ghost"
