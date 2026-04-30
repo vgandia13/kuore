@@ -138,7 +138,7 @@ const Navbar = () => {
         <div className="md:hidden flex flex-col w-full px-4 pb-3 gap-2 border-t border-border">
           {routes.map((route) => (
             <Link key={route.title} href={route.href} passHref>
-              <Button variant="ghost" className="w-full justify-start">
+              <Button variant="ghost" className="w-full justify-start" onClick={() => setOpenMenu(false)}>
                 {route.title}
               </Button>
             </Link>
