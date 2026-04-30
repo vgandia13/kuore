@@ -10,9 +10,6 @@ export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // useEffect solo se ejecuta en el cliente.
-  // Esto garantiza que el componente sabe en qué entorno está.
-
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
