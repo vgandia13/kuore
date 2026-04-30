@@ -3,22 +3,21 @@ import {
   ChevronDown,
   Plus,
   Crown,
-  Funnel,
   IdCard,
   BriefcaseBusiness,
   Target,
   Files,
+  ListTodo,
+  CalendarDays,
+  BookUser,
+  Mail,
+  Cog,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EntityHeader } from "@/components/shared/EntityHeader";
 import RelatedListCard from "@/components/shared/RelatedListCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import {
-  InputGroup,
-  InputGroupInput,
-  InputGroupButton,
-} from "@/components/ui/input-group";
 import {
   Accordion,
   AccordionTrigger,
@@ -191,9 +190,32 @@ const ContactsPage = () => {
             <TabsContent value="activity">
               <div className="bg-background border rounded-lg">
                 <Card className="w-full">
-                  <CardHeader>
-                    <ButtonGroup>
-                        
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <ButtonGroup orientation="horizontal" className="w-fit">
+                      <Button
+                        size={"lg"}
+                        className="bg-green-600 border border-border py-0.5 px-2"
+                      >
+                        <ListTodo size={12} className="text-background" />
+                      </Button>
+                      <Button
+                        size={"lg"}
+                        className="bg-blue-400 border border-border py-0.5 px-2"
+                      >
+                        <CalendarDays size={12} className="text-background" />
+                      </Button>
+                      <Button
+                        size={"lg"}
+                        className="bg-emerald-700 border border-border py-0.5 px-2"
+                      >
+                        <BookUser size={12} className="text-background" />
+                      </Button>
+                      <Button
+                        size={"lg"}
+                        className="bg-slate-500 border border-border py-0.5 px-2"
+                      >
+                        <Mail size={12} className="text-background" />
+                      </Button>
                     </ButtonGroup>
                   </CardHeader>
                   <CardContent>
@@ -201,13 +223,17 @@ const ContactsPage = () => {
                       <span>
                         Filters: All time • All activities • All types
                       </span>
-                      <Button className="bg-background-muted border border-border py-0.5 px-2">
-                        <Funnel
-                          fill="muted-foreground"
+                      <Button className="dark:bg-gray-500 border-border py-0.5 px-2">
+                        <Cog
                           size={9}
-                          className="text-border dark:font-extrabold"
+                          className="text-background"
                         />
                       </Button>
+                    </div>
+                    <div className="flex items-center align-bottom justify-end gap-3 m-1">
+                      <span className="text-blue-600">
+                        Refresh • Expand all • View All
+                      </span>
                     </div>
                     <Accordion type="single" collapsible className="w-full">
                       <AccordionItem value="upcoming">
@@ -216,11 +242,11 @@ const ContactsPage = () => {
                         </AccordionTrigger>
                         <AccordionContent className="h-full flex flex-col items-center">
                           <span className="font-light opacity-60">
-                            No next steps.
+                            No activities to show.
                           </span>
                           <span className="font-light opacity-60">
-                            To get things moving, add a task or set up a
-                            meeting.
+                            Get started by sending an email, scheduling a task,
+                            and more.
                           </span>
                         </AccordionContent>
                       </AccordionItem>
