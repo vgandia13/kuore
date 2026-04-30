@@ -44,6 +44,7 @@ const ContactsPage = () => {
     },
   ];
 
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
   const opportunitiesColumn: ColumnDef<any>[] = [
     { header: "Stage", accessorKey: "stage" },
     { header: "Name", accessorKey: "name" },
