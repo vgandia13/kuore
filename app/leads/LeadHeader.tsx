@@ -28,58 +28,67 @@ const LeadHeader = ({ layoutMode, setLayoutMode }: LeadHeaderProps) => {
 
   const actions = (
     <>
-      <div className="flex items-center border border-border rounded-md bg-background overflow-hidden shadow-sm mr-2">
-        <Button
-          variant="ghost"
-          className="h-8 w-15 px-3 text-xs font-semibold border-r border-border rounded-none"
-        >
-          New
-        </Button>
-        <Button variant="ghost" size="icon" className="h-6 w-6 rounded-none">
-          <ChevronDown size={14} />
-        </Button>
-      </div>
-
-      <div className="flex items-center gap-1">
-        <Button variant="outline" size="icon" className="h-8 w-8 shadow-sm">
-          <RotateCw size={16} className="text-muted-foreground" />
-        </Button>
-        <Button variant="outline" size="icon" className="h-8 w-8 shadow-sm">
-          <Pencil size={16} className="text-muted-foreground" />
-        </Button>
-        <Button variant="outline" size="icon" className="h-8 w-8 shadow-sm">
-          <Settings size={16} className="text-muted-foreground" />
-        </Button>
-
-        <div className="flex items-center border border-border rounded-md bg-background shadow-sm ml-1 overflow-hidden">
+      
+        <div className="flex items-center border border-border rounded-md bg-background overflow-hidden shadow-sm mr-2">
           <Button
             variant="ghost"
-            size="icon"
-            className={`h-8 w-8 rounded-none border-r border-border ${
-              layoutMode === "grid" ? "bg-muted" : ""
-            }`}
-            onClick={() => setLayoutMode("grid")}
+            className="h-8 w-15 px-3 text-xs font-semibold border-r border-border rounded-none"
           >
-            <Grid2X2
-              size={16}
-              className={layoutMode === "grid" ? "text-blue-500" : "text-muted-foreground"}
-            />
+            New
           </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className={`h-8 w-8 rounded-none ${
-              layoutMode === "table" ? "bg-muted" : ""
-            }`}
-            onClick={() => setLayoutMode("table")}
-          >
-            <TableProperties
-              size={16}
-              className={layoutMode === "table" ? "text-blue-500" : "text-muted-foreground"}
-            />
+          <Button variant="ghost" size="icon" className="h-6 w-6 rounded-none">
+            <ChevronDown size={14} />
           </Button>
         </div>
-      </div>
+
+        <div className="flex items-center gap-1">
+          <Button variant="outline" size="icon" className="h-8 w-8 shadow-sm">
+            <RotateCw size={16} className="text-muted-foreground" />
+          </Button>
+          <Button variant="outline" size="icon" className="h-8 w-8 shadow-sm">
+            <Pencil size={16} className="text-muted-foreground" />
+          </Button>
+          <Button variant="outline" size="icon" className="h-8 w-8 shadow-sm">
+            <Settings size={16} className="text-muted-foreground" />
+          </Button>
+
+          <div className="flex items-center border border-border rounded-md bg-background shadow-sm ml-1 overflow-hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              className={`h-8 w-8 rounded-none border-r border-border ${
+                layoutMode === "grid" ? "bg-muted" : ""
+              }`}
+              onClick={() => setLayoutMode("grid")}
+            >
+              <Grid2X2
+                size={16}
+                className={
+                  layoutMode === "grid"
+                    ? "text-blue-500"
+                    : "text-muted-foreground"
+                }
+              />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className={`h-8 w-8 rounded-none ${
+                layoutMode === "table" ? "bg-muted" : ""
+              }`}
+              onClick={() => setLayoutMode("table")}
+            >
+              <TableProperties
+                size={16}
+                className={
+                  layoutMode === "table"
+                    ? "text-blue-500"
+                    : "text-muted-foreground"
+                }
+              />
+            </Button>
+          </div>
+        </div>
     </>
   );
 
@@ -120,8 +129,10 @@ const LeadHeader = ({ layoutMode, setLayoutMode }: LeadHeaderProps) => {
                 Recently Viewed Leads
               </Button>
 
-              <Button variant="ghost" onClick={() => setView("Today&apos;s Leads")}>
-                
+              <Button
+                variant="ghost"
+                onClick={() => setView("Today&apos;s Leads")}
+              >
                 Today&apos;s Leads
               </Button>
               <Button

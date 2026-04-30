@@ -63,20 +63,20 @@ const AccountsPage = () => {
     },
   ];
 
-  const contacsColumn = [
+  const contacsColumn: ColumnDef<any>[] = [
     { header: "Name", accessorKey: "name" },
     { header: "Title", accessorKey: "title" },
     { header: "Email", accessorKey: "email" },
   ];
 
-  const opportunitiesColumn = [
+  const opportunitiesColumn: ColumnDef<any>[] = [
     { header: "Stage", accessorKey: "stage" },
     { header: "Name", accessorKey: "name" },
     { header: "Title", accessorKey: "title" },
     { header: "Email", accessorKey: "email" },
   ];
 
-  const casesColumn = [
+  const casesColumn: ColumnDef<any>[] = [
     { header: "Stage", accessorKey: "stage" },
     { header: "Name", accessorKey: "name" },
     { header: "Title", accessorKey: "title" },
@@ -167,7 +167,7 @@ const AccountsPage = () => {
                   </Button>
                 }
                 data={contactsData}
-                columns={contacsColumn as ColumnDef}
+                columns={contacsColumn}
               />
               <RelatedListCard
                 title={`Opportunities`}

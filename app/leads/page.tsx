@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Bookmark, ChevronDown } from "lucide-react";
 import LeadHeader from "./LeadHeader";
 import { Button } from "@/components/ui/button";
+import { ButtonGroup } from "@/components/ui/button-group";
 
 const LeadPage = () => {
   const [layoutMode, setLayoutMode] = useState<"table" | "grid">(() =>
@@ -88,42 +89,44 @@ const LeadPage = () => {
         </div>
 
         <div className="border border-border rounded-full flex items-center bg-background overflow-hidden shadow-sm flex-wrap">
-          <Button
-            variant="link"
-            className="text-blue-500 px-3 h-9 hover:no-underline hover:bg-muted"
-          >
-            Add to campaign
-          </Button>
-          <span
-            className="h-6 border-r border-border hidden sm:block"
-            aria-hidden="true"
-          />
-          <Button
-            variant="link"
-            className="text-blue-500 px-3 h-9 hover:no-underline hover:bg-muted"
-          >
-            Change Status
-          </Button>
-          <span
-            className="h-6 border-r border-border hidden sm:block"
-            aria-hidden="true"
-          />
-          <Button
-            variant="link"
-            className="text-blue-500 px-3 h-9 hover:no-underline hover:bg-muted"
-          >
-            Change Owner
-          </Button>
-          <span
-            className="h-6 border-r border-border hidden sm:block"
-            aria-hidden="true"
-          />
-          <Button
-            variant="link"
-            className="text-blue-500 px-3 h-9 hover:no-underline hover:bg-muted"
-          >
-            Assign
-          </Button>
+          <ButtonGroup orientation="horizontal">
+            <Button
+              variant="link"
+              className="text-blue-500 px-3 h-9 hover:no-underline hover:bg-muted"
+            >
+              Add to campaign
+            </Button>
+            <span
+              className="h-6 border-r border-border hidden sm:block"
+              aria-hidden="true"
+            />
+            <Button
+              variant="link"
+              className="text-blue-500 px-3 h-9 hover:no-underline hover:bg-muted"
+            >
+              Change Status
+            </Button>
+            <span
+              className="h-6 border-r border-border hidden sm:block"
+              aria-hidden="true"
+            />
+            <Button
+              variant="link"
+              className="text-blue-500 px-3 h-9 hover:no-underline hover:bg-muted"
+            >
+              Change Owner
+            </Button>
+            <span
+              className="h-6 border-r border-border hidden sm:block"
+              aria-hidden="true"
+            />
+            <Button
+              variant="link"
+              className="text-blue-500 px-3 h-9 hover:no-underline hover:bg-muted"
+            >
+              Assign
+            </Button>
+          </ButtonGroup>
         </div>
       </div>
 
