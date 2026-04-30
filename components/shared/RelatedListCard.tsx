@@ -56,7 +56,7 @@ const RelatedListCard = <T,>({
               {action && <div>{action}</div>}
             </CardHeader>
           </AccordionTrigger>
-          <CardContent >
+          <CardContent>
             <AccordionContent className="h-auto">
               <Separator className="my-2" />
               {data.length === 0 ? (
