@@ -60,7 +60,7 @@ const Navbar = () => {
                         asChild
                         className={`${navigationMenuTriggerStyle()} `}
                       >
-                        <Button variant={"ghost"}>
+                        <Button variant={"ghost"} onClick={() => setOpenMenu(false)}>
                           <span className="flex items-center cursor-pointer">
                             {route.title}
                           </span>
