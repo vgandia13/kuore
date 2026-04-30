@@ -230,7 +230,7 @@ const ContactsPage = () => {
                         />
                       </Button>
                     </div>
-                    <div className="flex items-center align-bottom justify-end gap-3 m-1">
+                    <div className="flex items-center align-bottom justify-end gap-3 my-2">
                       <span className="text-blue-600">
                         Refresh • Expand all • View All
                       </span>
