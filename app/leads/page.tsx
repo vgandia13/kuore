@@ -97,7 +97,7 @@ const LeadPage = () => {
               Add to campaign
             </Button>
             <span
-              className="h-6 border-r border-border hidden sm:block"
+              className="h-9 border-r border-border hidden sm:block"
               aria-hidden="true"
             />
             <Button
@@ -107,7 +107,7 @@ const LeadPage = () => {
               Change Status
             </Button>
             <span
-              className="h-6 border-r border-border hidden sm:block"
+              className="h-9 border-r border-border hidden sm:block"
               aria-hidden="true"
             />
             <Button
@@ -117,7 +117,7 @@ const LeadPage = () => {
               Change Owner
             </Button>
             <span
-              className="h-6 border-r border-border hidden sm:block"
+              className="h-9 border-r border-border hidden sm:block"
               aria-hidden="true"
             />
             <Button
