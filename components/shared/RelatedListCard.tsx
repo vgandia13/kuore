@@ -14,6 +14,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
+import { Separator } from "../ui/separator";
 
 export interface ColumnDef<T> {
   header: string;
@@ -38,10 +39,10 @@ const RelatedListCard = <T,>({
   columns,
 }: RelatedListCardProps<T>) => {
   return (
-    <Card className="shadow-sm">
+    <Card className="shadow-md">
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
-          <CardHeader className="flex flex-row items-center justify-between py-3 px-4 border-b">
+          <CardHeader className="flex flex-row items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="text-muted-foreground">{icon}</div>
               <CardTitle className="text-base font-semibold flex items-center gap-1">
@@ -56,8 +57,9 @@ const RelatedListCard = <T,>({
             {action && <div>{action}</div>}
           </CardHeader>
 
-          <CardContent className="p-0">
+          <CardContent>
             <AccordionContent>
+              <Separator className="my-2" />
               {data.length === 0 ? (
                 <div className="flex justify-center p-6 text-sm text-muted-foreground">
                   No items to display
@@ -80,10 +82,7 @@ const RelatedListCard = <T,>({
                     {data.map((row: T, rowIndex: number) => (
                       <TableRow key={rowIndex}>
                         {columns.map((col: ColumnDef<T>) => (
-                          <TableCell
-                            key={col.accessorKey as string}
-                            className="text-sm py-2"
-                          >
+                          <TableCell key={col.accessorKey as string}>
                             {String(row[col.accessorKey] ?? "-")}
                           </TableCell>
                         ))}
