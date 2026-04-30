@@ -42,23 +42,22 @@ const RelatedListCard = <T,>({
     <Card className="shadow-md">
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
-          <CardHeader className="flex flex-row items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="text-muted-foreground">{icon}</div>
-              <CardTitle className="text-base font-semibold flex items-center gap-1">
-                <AccordionTrigger>
+          <AccordionTrigger className="p-0 pr-6">
+            <CardHeader className="flex flex-row items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="text-muted-foreground">{icon}</div>
+                <CardTitle className="text-base font-semibold flex items-center gap-1">
                   {title}
                   <span className="text-sm font-normal text-muted-foreground">
                     ({count})
                   </span>
-                </AccordionTrigger>
-              </CardTitle>
-            </div>
-            {action && <div>{action}</div>}
-          </CardHeader>
-
-          <CardContent>
-            <AccordionContent>
+                </CardTitle>
+              </div>
+              {action && <div>{action}</div>}
+            </CardHeader>
+          </AccordionTrigger>
+          <CardContent >
+            <AccordionContent className="h-auto">
               <Separator className="my-2" />
               {data.length === 0 ? (
                 <div className="flex justify-center p-6 text-sm text-muted-foreground">
