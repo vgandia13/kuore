@@ -122,6 +122,7 @@ const OpportunitiesPage = () => {
           ))}
         </div>
       </div>
+      <div className="h-2 w-screen bg-yellow-500 dark:bg-yellow-800" />
       <div className="p-4 bg-muted/40 overflow-x-auto">
         <div className="flex gap-4 min-w-max justify-center md:justify-start">
           <div className="w-64 shrink-0">
