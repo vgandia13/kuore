@@ -1,8 +1,11 @@
 "use client";
 
+import { EntityHeader } from "@/components/shared/EntityHeader";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useDragAndDrop } from "@formkit/drag-and-drop/react";
+import { Crown, ChevronDown, Plus } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const KanbanColumn = ({
   title,
@@ -61,8 +64,64 @@ const OpportunitiesPage = () => {
     group: "kanban",
   });
 
+  const actions = (
+    <div className="flex flex-wrap items-center gap-2">
+      <Button
+        variant="ghost"
+        className="h-8 px-3 text-xs font-semibold border border-border rounded-none shadow-sm bg-background"
+      >
+        <Plus /> Follow
+      </Button>
+      <div className="flex items-center border border-border rounded-md bg-background overflow-hidden shadow-sm">
+        <Button variant="ghost" className="h-8 px-3 text-xs font-semibold">
+          Edit
+        </Button>
+        <Button variant="ghost" className="h-8 px-3 text-xs font-semibold">
+          Delete
+        </Button>
+        <Button variant="ghost" className="h-8 px-3 text-xs font-semibold">
+          Clone
+        </Button>
+        <Button variant="ghost" size="icon" className="h-6 w-6 rounded-none">
+          <ChevronDown size={14} />
+        </Button>
+      </div>
+    </div>
+  );
+
+  const tabs = [
+    {label: "Account Name", value: "Zephyr Co." },
+    { label: "Close Date", value: "0/01/2018" },
+    {label: "Amount", value: "$256,000"},
+    {label: "Opportunity Owner", value: "Christine Mathison" },
+  ]
+
   return (
     <>
+      <EntityHeader
+        title="Opportunities"
+        subtitle="Opportunities"
+        icon={<Crown />}
+        colorClass="bg-yellow-500 dark:bg-yellow-800"
+        actions={actions}
+      />
+      <div className="bg-muted px-4 py-3 overflow-x-auto">
+          <div className="flex flex-wrap items-center gap-x-20 gap-y-2 min-w-max">
+            {tabs.map((item) => (
+              <div
+                key={item.label}
+                className="flex flex-col gap-0.5 cursor-pointer hover:text-primary transition-colors"
+              >
+                <span className="text-[10px] text-muted-foreground font-semibold uppercase">
+                  {item.label}
+                </span>
+                <span className="text-sm font-semibold text-foreground">
+                  {item.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       <div className="flex p-4 gap-4 bg-muted/40">
         <KanbanColumn
           title="Opportunities"
