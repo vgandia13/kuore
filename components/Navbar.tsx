@@ -40,7 +40,7 @@ const Navbar = () => {
     { title: "Leads", href: "/leads" },
     { title: "Accounts", href: "/accounts" },
     { title: "Contacts", href: "/contacts" },
-    { title: "Opportunities", href: "#" },
+    { title: "Opportunities", href: "/opportunities" },
   ];
 
   return (

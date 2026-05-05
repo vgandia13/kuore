@@ -18,6 +18,7 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
 
   useEffect(() => {
     if (!mounted) return;
+    if(pathname === "/" && userLogged) router.push("/home");
     if (!userLogged && pathname !== "/login") {
       router.push("/login");
     }

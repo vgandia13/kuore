@@ -43,10 +43,10 @@ const RelatedListCard = <T,>({
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
           <AccordionTrigger className="p-0 pr-6">
-            <CardHeader className="flex flex-row items-center justify-between">
+            <CardHeader className="flex flex-row items-center justify-between w-full">
               <div className="flex items-center gap-2">
                 <div className="text-muted-foreground">{icon}</div>
-                <CardTitle className="text-base font-semibold flex items-center gap-1">
+                <CardTitle className="text-base font-semibold flex items-center gap-1 w-auto">
                   {title}
                   <span className="text-sm font-normal text-muted-foreground">
                     ({count})
