@@ -123,9 +123,9 @@ const OpportunitiesPage = () => {
         </div>
       </div>
       <div className="h-2 w-screen bg-yellow-500 dark:bg-yellow-800" />
-      <div className="p-4 bg-muted/40 overflow-x-auto">
-        <div className="flex gap-4 min-w-max justify-center md:justify-start">
-          <div className="w-64 shrink-0">
+      <div className="p-4 bg-muted/40">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+          <div>
             <KanbanColumn
               title="Opportunities"
               items={opportunities}
@@ -133,7 +133,7 @@ const OpportunitiesPage = () => {
               badgeColor="bg-red-500 w-6"
             />
           </div>
-          <div className="w-64 shrink-0">
+          <div>
             <KanbanColumn
               title="Prospecting"
               items={prospecting}
@@ -141,7 +141,7 @@ const OpportunitiesPage = () => {
               badgeColor="bg-orange-500 w-6"
             />
           </div>
-          <div className="w-64 shrink-0">
+          <div>
             <KanbanColumn
               title="Investigate"
               items={investigate}
@@ -149,7 +149,7 @@ const OpportunitiesPage = () => {
               badgeColor="bg-yellow-500 w-6"
             />
           </div>
-          <div className="w-64 shrink-0">
+          <div>
             <KanbanColumn
               title="Presentation"
               items={presentation}
@@ -157,7 +157,7 @@ const OpportunitiesPage = () => {
               badgeColor="bg-blue-500 w-6"
             />
           </div>
-          <div className="w-64 shrink-0">
+          <div>
             <KanbanColumn
               title="Closed Win"
               items={close}
