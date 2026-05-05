@@ -29,7 +29,7 @@ const KanbanColumn = ({
               key={item}
               className="list-none p-2 border rounded-md bg-card shadow-sm cursor-grab flex justify-between items-center"
             >
-              {item} <Badge className={badgeColor}/>
+              {item} <Badge className={badgeColor} />
             </li>
           ))}
         </ul>
@@ -42,7 +42,7 @@ const OpportunitiesPage = () => {
   const [opportunityList, opportunities] = useDragAndDrop<
     HTMLUListElement,
     string
-  >(["Kuore Corp", "Get Cloudy", "John Pork & Associates"], {
+  >(["Kuore Corp", "Get Cloudy", "John Pork & Associates", "Tim Cheese Inc"], {
     group: "kanban",
   });
   const [prospectingList, prospecting] = useDragAndDrop<
@@ -63,7 +63,7 @@ const OpportunitiesPage = () => {
 
   return (
     <>
-      <div className="flex p-4 gap-4 bg-muted/20 min-h-screen">
+      <div className="flex p-4 gap-4 bg-muted/40">
         <KanbanColumn
           title="Opportunities"
           items={opportunities}
@@ -89,7 +89,7 @@ const OpportunitiesPage = () => {
           badgeColor="bg-blue-500 w-6"
         />
         <KanbanColumn
-          title="Close"
+          title="Closed Win"
           items={close}
           listRef={closeList}
           badgeColor="bg-green-500 w-6"
