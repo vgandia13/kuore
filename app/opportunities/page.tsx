@@ -90,11 +90,11 @@ const OpportunitiesPage = () => {
   );
 
   const tabs = [
-    {label: "Account Name", value: "Zephyr Co." },
+    { label: "Account Name", value: "Zephyr Co." },
     { label: "Close Date", value: "0/01/2018" },
-    {label: "Amount", value: "$256,000"},
-    {label: "Opportunity Owner", value: "Christine Mathison" },
-  ]
+    { label: "Amount", value: "$256,000" },
+    { label: "Opportunity Owner", value: "Christine Mathison" },
+  ];
 
   return (
     <>
@@ -106,53 +106,65 @@ const OpportunitiesPage = () => {
         actions={actions}
       />
       <div className="bg-muted px-4 py-3 overflow-x-auto">
-          <div className="flex flex-wrap items-center gap-x-20 gap-y-2 min-w-max">
-            {tabs.map((item) => (
-              <div
-                key={item.label}
-                className="flex flex-col gap-0.5 cursor-pointer hover:text-primary transition-colors"
-              >
-                <span className="text-[10px] text-muted-foreground font-semibold uppercase">
-                  {item.label}
-                </span>
-                <span className="text-sm font-semibold text-foreground">
-                  {item.value}
-                </span>
-              </div>
-            ))}
+        <div className="flex flex-wrap items-center gap-x-20 gap-y-2 min-w-max">
+          {tabs.map((item) => (
+            <div
+              key={item.label}
+              className="flex flex-col gap-0.5 cursor-pointer hover:text-primary transition-colors"
+            >
+              <span className="text-[10px] text-muted-foreground font-semibold uppercase">
+                {item.label}
+              </span>
+              <span className="text-sm font-semibold text-foreground">
+                {item.value}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="p-4 bg-muted/40 overflow-x-auto">
+        <div className="flex gap-4 min-w-max justify-center md:justify-start">
+          <div className="w-64 shrink-0">
+            <KanbanColumn
+              title="Opportunities"
+              items={opportunities}
+              listRef={opportunityList}
+              badgeColor="bg-red-500 w-6"
+            />
+          </div>
+          <div className="w-64 shrink-0">
+            <KanbanColumn
+              title="Prospecting"
+              items={prospecting}
+              listRef={prospectingList}
+              badgeColor="bg-orange-500 w-6"
+            />
+          </div>
+          <div className="w-64 shrink-0">
+            <KanbanColumn
+              title="Investigate"
+              items={investigate}
+              listRef={investigateList}
+              badgeColor="bg-yellow-500 w-6"
+            />
+          </div>
+          <div className="w-64 shrink-0">
+            <KanbanColumn
+              title="Presentation"
+              items={presentation}
+              listRef={presentationList}
+              badgeColor="bg-blue-500 w-6"
+            />
+          </div>
+          <div className="w-64 shrink-0">
+            <KanbanColumn
+              title="Closed Win"
+              items={close}
+              listRef={closeList}
+              badgeColor="bg-green-500 w-6"
+            />
           </div>
         </div>
-      <div className="flex p-4 gap-4 bg-muted/40">
-        <KanbanColumn
-          title="Opportunities"
-          items={opportunities}
-          listRef={opportunityList}
-          badgeColor="bg-red-500 w-6"
-        />
-        <KanbanColumn
-          title="Prospecting"
-          items={prospecting}
-          listRef={prospectingList}
-          badgeColor="bg-orange-500 w-6"
-        />
-        <KanbanColumn
-          title="Investigate"
-          items={investigate}
-          listRef={investigateList}
-          badgeColor="bg-yellow-500 w-6"
-        />
-        <KanbanColumn
-          title="Presentation"
-          items={presentation}
-          listRef={presentationList}
-          badgeColor="bg-blue-500 w-6"
-        />
-        <KanbanColumn
-          title="Closed Win"
-          items={close}
-          listRef={closeList}
-          badgeColor="bg-green-500 w-6"
-        />
       </div>
     </>
   );
