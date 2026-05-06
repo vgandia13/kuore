@@ -28,67 +28,78 @@ const LeadHeader = ({ layoutMode, setLayoutMode }: LeadHeaderProps) => {
 
   const actions = (
     <>
-      
-        <div className="flex items-center border border-border rounded-md bg-background overflow-hidden shadow-sm mr-2">
+      <div className="flex items-center border border-border rounded-md bg-background overflow-hidden shadow-sm mr-2">
+        <Button
+          variant="ghost"
+          className="h-8 w-15 px-3 text-xs font-semibold border-r border-border rounded-none"
+        >
+          New
+        </Button>
+        <Popover>
+          <PopoverTrigger className="h-6 w-6 rounded-none p-0.5 flex items-center justify-center">
+            <ChevronDown size={14} />
+          </PopoverTrigger>
+          <PopoverContent className="w-23 pr-1">
+            <Button
+              variant="ghost"
+              className="h-8 w-18 px-3 text-xs font-semibold border-r border-border rounded-md"
+              >New Lead</Button>
+              <Button
+              variant="ghost"
+              className="h-8 w-18 text-xs font-semibold border-r border-border rounded-md"
+              >New View</Button>
+          </PopoverContent>
+        </Popover>
+      </div>
+
+      <div className="flex items-center gap-1">
+        <Button variant="outline" size="icon" className="h-8 w-8 shadow-sm">
+          <RotateCw size={16} className="text-muted-foreground" />
+        </Button>
+        <Button variant="outline" size="icon" className="h-8 w-8 shadow-sm">
+          <Pencil size={16} className="text-muted-foreground" />
+        </Button>
+        <Button variant="outline" size="icon" className="h-8 w-8 shadow-sm">
+          <Settings size={16} className="text-muted-foreground" />
+        </Button>
+
+        <div className="flex items-center border border-border rounded-md bg-background shadow-sm ml-1 overflow-hidden">
           <Button
             variant="ghost"
-            className="h-8 w-15 px-3 text-xs font-semibold border-r border-border rounded-none"
+            size="icon"
+            className={`h-8 w-8 rounded-none border-r border-border ${
+              layoutMode === "grid" ? "bg-muted" : ""
+            }`}
+            onClick={() => setLayoutMode("grid")}
           >
-            New
+            <Grid2X2
+              size={16}
+              className={
+                layoutMode === "grid"
+                  ? "text-blue-500"
+                  : "text-muted-foreground"
+              }
+            />
           </Button>
-          <Button variant="ghost" size="icon" className="h-6 w-6 rounded-none">
-            <ChevronDown size={14} />
+          <Button
+            variant="ghost"
+            size="icon"
+            className={`h-8 w-8 rounded-none ${
+              layoutMode === "table" ? "bg-muted" : ""
+            }`}
+            onClick={() => setLayoutMode("table")}
+          >
+            <TableProperties
+              size={16}
+              className={
+                layoutMode === "table"
+                  ? "text-blue-500"
+                  : "text-muted-foreground"
+              }
+            />
           </Button>
         </div>
-
-        <div className="flex items-center gap-1">
-          <Button variant="outline" size="icon" className="h-8 w-8 shadow-sm">
-            <RotateCw size={16} className="text-muted-foreground" />
-          </Button>
-          <Button variant="outline" size="icon" className="h-8 w-8 shadow-sm">
-            <Pencil size={16} className="text-muted-foreground" />
-          </Button>
-          <Button variant="outline" size="icon" className="h-8 w-8 shadow-sm">
-            <Settings size={16} className="text-muted-foreground" />
-          </Button>
-
-          <div className="flex items-center border border-border rounded-md bg-background shadow-sm ml-1 overflow-hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              className={`h-8 w-8 rounded-none border-r border-border ${
-                layoutMode === "grid" ? "bg-muted" : ""
-              }`}
-              onClick={() => setLayoutMode("grid")}
-            >
-              <Grid2X2
-                size={16}
-                className={
-                  layoutMode === "grid"
-                    ? "text-blue-500"
-                    : "text-muted-foreground"
-                }
-              />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className={`h-8 w-8 rounded-none ${
-                layoutMode === "table" ? "bg-muted" : ""
-              }`}
-              onClick={() => setLayoutMode("table")}
-            >
-              <TableProperties
-                size={16}
-                className={
-                  layoutMode === "table"
-                    ? "text-blue-500"
-                    : "text-muted-foreground"
-                }
-              />
-            </Button>
-          </div>
-        </div>
+      </div>
     </>
   );
 
@@ -129,10 +140,7 @@ const LeadHeader = ({ layoutMode, setLayoutMode }: LeadHeaderProps) => {
                 Recently Viewed Leads
               </Button>
 
-              <Button
-                variant="ghost"
-                onClick={() => setView("Today's Leads")}
-              >
+              <Button variant="ghost" onClick={() => setView("Today's Leads")}>
                 {/*eslint-disable-next-line react/no-unescaped-entities*/}
                 Today's Leads
               </Button>
