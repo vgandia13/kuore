@@ -17,7 +17,13 @@ import {
   PopoverContent,
 } from "@/components/ui/popover";
 import { useState } from "react";
-import { Dialog, DialogContent, DialogTrigger, DialogClose, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogClose,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface LeadHeaderProps {
   layoutMode: "table" | "grid";
@@ -50,10 +56,8 @@ const LeadHeader = ({ layoutMode, setLayoutMode }: LeadHeaderProps) => {
                   <DialogTitle className="text-sm">New Lead</DialogTitle>
                 </Button>
               </DialogTrigger>
-              <DialogContent aria-describedby="" className="max-w-sm">
-                <DialogClose asChild>
-                  <Button className="w-full">Cancel</Button>
-                </DialogClose>
+              <DialogContent>
+                <DialogClose />
               </DialogContent>
             </Dialog>
 
@@ -66,10 +70,8 @@ const LeadHeader = ({ layoutMode, setLayoutMode }: LeadHeaderProps) => {
                   <DialogTitle className="text-sm">New View</DialogTitle>
                 </Button>
               </DialogTrigger>
-              <DialogContent aria-describedby="" className="max-w-sm">
-                <DialogClose asChild>
-                  <Button className="w-full">Cancel</Button>
-                </DialogClose>
+              <DialogContent>
+                <DialogClose />
               </DialogContent>
             </Dialog>
           </PopoverContent>
