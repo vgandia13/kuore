@@ -34,11 +34,15 @@ const getServerSnapshot = () => {
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   // useSyncExternalStore gestiona automáticamente la hidratación y el estado
   // sin causar renderizados en cascada (cascading renders).
+  // Nota: en Next.js, localStorage no existe en el servidor.
   const userLogged = useSyncExternalStore(
     subscribe,
     getSnapshot,
     getServerSnapshot,
   );
+
+  // Depuración: Aseguramos que siempre tengamos un valor booleano
+  const safeUserLogged = typeof userLogged === 'boolean' ? userLogged : false;
 
   const setUserLogged = useCallback((status: boolean) => {
     if (status) {
@@ -51,7 +55,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ userLogged, setUserLogged }}>
+    <AppContext.Provider value={{ userLogged: safeUserLogged, setUserLogged }}>
       {children}
     </AppContext.Provider>
   );

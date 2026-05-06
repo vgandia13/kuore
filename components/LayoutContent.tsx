@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useData } from "../app/contexts/AppContext";
 import Navbar from "@/components/Navbar";
 import { usePathname, useRouter } from "next/navigation";
@@ -9,29 +9,22 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
   const { userLogged } = useData();
   const pathname = usePathname();
   const router = useRouter();
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
-    if(pathname === "/" && userLogged) router.push("/home");
-    if (!userLogged && pathname !== "/login") {
-      router.push("/login");
+    if (userLogged === undefined) return;
+    
+    // Protección de rutas
+    if (pathname === "/" && userLogged) {
+      router.replace("/home");
+    } else if (!userLogged && pathname !== "/login") {
+      router.replace("/login");
+    } else if (userLogged && pathname === "/login") {
+      router.replace("/home");
     }
-    if (userLogged && pathname === "/login") {
-      router.push("/home");
-    }
-  }, [userLogged, pathname, router, mounted]);
+  }, [userLogged, pathname, router]);
 
-  if (!mounted) return null;
-
-  if (!userLogged && pathname !== "/login") {
-    return null;
-  }
+  // Si no está definido (cargando estado), devolvemos null
+  if (userLogged === undefined) return null; 
 
   return (
     <>
