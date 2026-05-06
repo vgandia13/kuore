@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -41,21 +41,30 @@ const RelatedListCard = <T,>({
   return (
     <Card className="shadow-md">
       <Accordion type="single" collapsible>
+        {/* Le quitamos el 'relative' al AccordionItem */}
         <AccordionItem value="item-1">
-          <AccordionTrigger className="p-0 pr-6">
-            <CardHeader className="flex flex-row items-center justify-between w-full">
+          {/* NUEVO: Contenedor relativo exclusivo para la zona de la cabecera */}
+          <div className="relative">
+            {/* La acción se posiciona y se centra SOLO respecto a la altura de este div */}
+            {action && (
+              <div className="absolute right-12 top-0 bottom-0 flex items-center z-10">
+                {action}
+              </div>
+            )}
+
+            <AccordionTrigger className="w-full hover:no-underline py-4 px-6 pr-32">
               <div className="flex items-center gap-2">
                 <div className="text-muted-foreground">{icon}</div>
-                <CardTitle className="text-base font-semibold flex items-center gap-1 w-auto">
+                <CardTitle className="text-base font-semibold flex items-center gap-1">
                   {title}
                   <span className="text-sm font-normal text-muted-foreground">
                     ({count})
                   </span>
                 </CardTitle>
               </div>
-              {action && <div>{action}</div>}
-            </CardHeader>
-          </AccordionTrigger>
+            </AccordionTrigger>
+          </div>
+
           <CardContent>
             <AccordionContent className="h-auto">
               <Separator className="my-2" />
