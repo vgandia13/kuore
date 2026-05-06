@@ -17,6 +17,7 @@ import {
   PopoverContent,
 } from "@/components/ui/popover";
 import { useState } from "react";
+import { Dialog, DialogContent, DialogTrigger, DialogClose, DialogTitle } from "@/components/ui/dialog";
 
 interface LeadHeaderProps {
   layoutMode: "table" | "grid";
@@ -40,14 +41,37 @@ const LeadHeader = ({ layoutMode, setLayoutMode }: LeadHeaderProps) => {
             <ChevronDown size={14} />
           </PopoverTrigger>
           <PopoverContent className="w-23 pr-1">
-            <Button
-              variant="ghost"
-              className="h-8 w-18 px-3 text-xs font-semibold border-r border-border rounded-md"
-              >New Lead</Button>
-              <Button
-              variant="ghost"
-              className="h-8 w-18 text-xs font-semibold border-r border-border rounded-md"
-              >New View</Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="h-8 w-18 px-3 font-semibold border-r border-border rounded-md"
+                >
+                  <DialogTitle className="text-sm">New Lead</DialogTitle>
+                </Button>
+              </DialogTrigger>
+              <DialogContent aria-describedby="" className="max-w-sm">
+                <DialogClose asChild>
+                  <Button className="w-full">Cancel</Button>
+                </DialogClose>
+              </DialogContent>
+            </Dialog>
+
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="h-8 w-18 px-3 font-semibold border-r border-border rounded-md"
+                >
+                  <DialogTitle className="text-sm">New View</DialogTitle>
+                </Button>
+              </DialogTrigger>
+              <DialogContent aria-describedby="" className="max-w-sm">
+                <DialogClose asChild>
+                  <Button className="w-full">Cancel</Button>
+                </DialogClose>
+              </DialogContent>
+            </Dialog>
           </PopoverContent>
         </Popover>
       </div>
