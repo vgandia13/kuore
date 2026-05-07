@@ -40,8 +40,8 @@ export default function RootLayout({
       <body className="min-h-screen">
         <AppProvider>
           <ThemeProvider attribute="class" defaultTheme="system">
-          <Toaster position="top-center" richColors />
-          <LayoutContent>{children}</LayoutContent>
+            <Toaster position="top-center" richColors />
+            <LayoutContent>{children}</LayoutContent>
           </ThemeProvider>
         </AppProvider>
       </body>

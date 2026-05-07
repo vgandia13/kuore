@@ -47,16 +47,26 @@ interface LeadHeaderProps {
   onAddLead?: (lead: LeadInterface) => void;
 }
 
-interface ViewInterface {
+export interface ViewInterface {
   id: number;
   name: string;
   fields: string[];
 }
 
-const LeadHeader = ({ layoutMode, setLayoutMode, selectedView, setSelectedView, onAddLead }: LeadHeaderProps) => {
+const LeadHeader = ({
+  layoutMode,
+  setLayoutMode,
+  selectedView,
+  setSelectedView,
+  onAddLead,
+}: LeadHeaderProps) => {
   const [view, setView] = useState(selectedView.name);
   const [views, setViews] = useState<ViewInterface[]>([
-    { id: 1, name: "All Open Leads", fields: ["Name", "Title", "Company", "Status", "Source", "Last Activity"] },
+    {
+      id: 1,
+      name: "All Open Leads",
+      fields: ["Name", "Title", "Company", "Status", "Source", "Last Activity"],
+    },
     { id: 2, name: "My Unread Leads", fields: ["Name", "Title", "Company"] },
     { id: 3, name: "Recently Viewed", fields: ["Name", "Last Activity"] },
   ]);
@@ -116,7 +126,7 @@ const LeadHeader = ({ layoutMode, setLayoutMode, selectedView, setSelectedView, 
 
   const handleFieldToggle = (field: string) => {
     setSelectedFields((prev) =>
-      prev.includes(field) ? prev.filter((f) => f !== field) : [...prev, field]
+      prev.includes(field) ? prev.filter((f) => f !== field) : [...prev, field],
     );
   };
 
@@ -144,48 +154,63 @@ const LeadHeader = ({ layoutMode, setLayoutMode, selectedView, setSelectedView, 
                 </Button>
               </DialogTrigger>
               <DialogContent>
-                <form onSubmit={handleLeadSubmit} className="flex flex-col gap-2 p-1">
+                <form
+                  onSubmit={handleLeadSubmit}
+                  className="flex flex-col gap-2 p-1"
+                >
                   <Field orientation={"horizontal"}>
                     <Label>Name:</Label>
                     <Input
                       value={newLead.name}
-                      onChange={(e) => setNewLead({ ...newLead, name: e.target.value })}
+                      onChange={(e) =>
+                        setNewLead({ ...newLead, name: e.target.value })
+                      }
                     />
                   </Field>
                   <Field orientation={"horizontal"}>
                     <Label>Title:</Label>
                     <Input
                       value={newLead.title}
-                      onChange={(e) => setNewLead({ ...newLead, title: e.target.value })}
+                      onChange={(e) =>
+                        setNewLead({ ...newLead, title: e.target.value })
+                      }
                     />
                   </Field>
                   <Field orientation={"horizontal"}>
                     <Label>Company:</Label>
                     <Input
                       value={newLead.company}
-                      onChange={(e) => setNewLead({ ...newLead, company: e.target.value })}
+                      onChange={(e) =>
+                        setNewLead({ ...newLead, company: e.target.value })
+                      }
                     />
                   </Field>
                   <Field orientation={"horizontal"}>
                     <Label>Status:</Label>
                     <Input
                       value={newLead.leadStatus}
-                      onChange={(e) => setNewLead({ ...newLead, leadStatus: e.target.value })}
+                      onChange={(e) =>
+                        setNewLead({ ...newLead, leadStatus: e.target.value })
+                      }
                     />
                   </Field>
                   <Field orientation={"horizontal"}>
                     <Label>Source:</Label>
                     <Input
                       value={newLead.leadSource}
-                      onChange={(e) => setNewLead({ ...newLead, leadSource: e.target.value })}
+                      onChange={(e) =>
+                        setNewLead({ ...newLead, leadSource: e.target.value })
+                      }
                     />
                   </Field>
                   <Field orientation={"horizontal"}>
                     <Label>Last Activity:</Label>
                     <Input
-                    type="date"
+                      type="date"
                       value={newLead.lastActivity}
-                      onChange={(e) => setNewLead({ ...newLead, lastActivity: e.target.value })}
+                      onChange={(e) =>
+                        setNewLead({ ...newLead, lastActivity: e.target.value })
+                      }
                     />
                   </Field>
                   <Button variant={"secondary"} type="submit">
@@ -205,7 +230,10 @@ const LeadHeader = ({ layoutMode, setLayoutMode, selectedView, setSelectedView, 
                 </Button>
               </DialogTrigger>
               <DialogContent>
-                <form onSubmit={handleViewSubmit} className="flex flex-col gap-2 p-1">
+                <form
+                  onSubmit={handleViewSubmit}
+                  className="flex flex-col gap-2 p-1"
+                >
                   <Field orientation={"horizontal"}>
                     <Label>View Name:</Label>
                     <Input
@@ -338,7 +366,11 @@ const LeadHeader = ({ layoutMode, setLayoutMode, selectedView, setSelectedView, 
           <PopoverContent side="bottom" align="start" className="w-auto">
             <div className="flex flex-col items-start justify-start">
               {views.map((v) => (
-                <Button key={v.id} variant="ghost" onClick={() => handleViewSelection(v)}>
+                <Button
+                  key={v.id}
+                  variant="ghost"
+                  onClick={() => handleViewSelection(v)}
+                >
                   {v.name}
                 </Button>
               ))}

@@ -69,7 +69,7 @@ const LeadPage = () => {
   ];
 
   const visibleColumns = allColumns.filter((col) =>
-    selectedView.fields.includes(col.label)
+    selectedView.fields.includes(col.label),
   );
 
   const stats = [
@@ -165,7 +165,10 @@ const LeadPage = () => {
               <TableHeader className="bg-muted">
                 <TableRow>
                   {visibleColumns.map((col) => (
-                    <TableHead key={col.key} className="font-bold text-foreground">
+                    <TableHead
+                      key={col.key}
+                      className="font-bold text-foreground"
+                    >
                       <div className="flex items-center gap-1 cursor-pointer hover:text-foreground/80">
                         {col.key === "title" && (
                           <Bookmark
@@ -202,7 +205,10 @@ const LeadPage = () => {
                           </Badge>
                         ) : col.key === "title" ? (
                           <div className="flex items-center gap-2">
-                            <Bookmark size={14} className="text-muted-foreground" />
+                            <Bookmark
+                              size={14}
+                              className="text-muted-foreground"
+                            />
                             {lead.title}
                           </div>
                         ) : (
