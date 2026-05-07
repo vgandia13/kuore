@@ -36,7 +36,7 @@ export interface LeadInterface {
   company: string;
   leadStatus: string;
   leadSource: string;
-  lastActivity: string;
+  lastActivity: Date;
 }
 
 interface LeadHeaderProps {
@@ -80,7 +80,7 @@ const LeadHeader = ({
     company: "",
     leadStatus: "New",
     leadSource: "Web",
-    lastActivity: new Date().toLocaleDateString(),
+    lastActivity: new Date(),
   });
 
   const handleLeadSubmit = (e: React.FormEvent) => {
@@ -89,6 +89,7 @@ const LeadHeader = ({
       onAddLead({
         ...newLead,
         id: Date.now(),
+        lastActivity: new Date(newLead.lastActivity as unknown as string),
       } as LeadInterface);
     }
     setIsOpenNewLead(false);
@@ -98,7 +99,7 @@ const LeadHeader = ({
       company: "",
       leadStatus: "New",
       leadSource: "Web",
-      lastActivity: new Date().toLocaleDateString(),
+      lastActivity: new Date(),
     });
     toast.success("Lead creado exitosamente");
   };
@@ -212,10 +213,17 @@ const LeadHeader = ({
                     <Label>Last Activity:</Label>
                     <Input
                       type="date"
-                      value={newLead.lastActivity}
+                      value={
+                        newLead.lastActivity instanceof Date
+                          ? newLead.lastActivity.toISOString().split("T")[0]
+                          : newLead.lastActivity
+                      }
                       required
                       onChange={(e) =>
-                        setNewLead({ ...newLead, lastActivity: e.target.value })
+                        setNewLead({
+                          ...newLead,
+                          lastActivity: new Date(e.target.value),
+                        })
                       }
                     />
                   </Field>

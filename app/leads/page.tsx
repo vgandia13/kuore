@@ -28,7 +28,7 @@ const LeadPage = () => {
       company: "BigLife Inc.",
       leadStatus: "Working",
       leadSource: "Trade Show",
-      lastActivity: "4/16/2025",
+      lastActivity: new Date("2025-04-16"),
     },
     {
       id: 2,
@@ -37,7 +37,7 @@ const LeadPage = () => {
       company: "TechCorp",
       leadStatus: "New",
       leadSource: "Web",
-      lastActivity: "4/17/2025",
+      lastActivity: new Date("2025-04-17"),
     },
     {
       id: 3,
@@ -46,7 +46,7 @@ const LeadPage = () => {
       company: "BigLife Inc.",
       leadStatus: "Working",
       leadSource: "Trade Show",
-      lastActivity: "4/18/2025",
+      lastActivity: new Date("2025-04-18"),
     },
   ]);
   const [selectedView, setSelectedView] = useState<ViewInterface>({
@@ -211,9 +211,13 @@ const LeadPage = () => {
                             />
                             {lead.title}
                           </div>
+                        ) : col.key === "lastActivity" ? (
+                          <span className="text-muted-foreground text-sm">
+                            {lead.lastActivity.toLocaleDateString()}
+                          </span>
                         ) : (
                           <span className="text-muted-foreground text-sm">
-                            {lead[col.key as keyof typeof lead]}
+                            {lead[col.key as keyof typeof lead] as React.ReactNode}
                           </span>
                         )}
                       </TableCell>
@@ -240,7 +244,7 @@ const LeadPage = () => {
                       {lead.leadStatus}
                     </Badge>
                     <span className="text-sm text-muted-foreground">
-                      Last Activity: {lead.lastActivity}
+                      Last Activity: {lead.lastActivity.toLocaleDateString()}
                     </span>
                   </div>
                 </CardContent>
