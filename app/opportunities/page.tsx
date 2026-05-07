@@ -142,6 +142,13 @@ const OpportunitiesPage = () => {
       enterpriseName: "Cloudy Inc",
       stage: "Opportunities",
     },
+    {
+      id: "3",
+      name: "Colab Kepler",
+      amount: 60000,
+      enterpriseName: "Kepler SL",
+      stage: "Presentation",
+    },
   ]);
 
   const [activeItem, setActiveItem] = useState<opportunityInterface | null>(
