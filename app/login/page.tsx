@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Image from "next/image";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const LoginPage = () => {
   const { setUserLogged } = useData();
@@ -41,7 +42,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex min-h-screen w-full bg-background">
+    <div className="flex min-h-screen w-full bg-background relative">
+      <div className="absolute top-4 right-4 flex gap-1">
+        <ThemeToggle />
+      </div>
       <div className="hidden md:flex w-1/2 bg-black items-center justify-center">
         <Image
           loading="eager"
@@ -69,7 +73,10 @@ const LoginPage = () => {
           </CardHeader>
           <form onSubmit={handleLogin}>
             <CardContent>
-              <label htmlFor="email" className="text-sm font-medium text-foreground">
+              <label
+                htmlFor="email"
+                className="text-sm font-medium text-foreground"
+              >
                 Usuario:
               </label>
               <Input
@@ -79,7 +86,10 @@ const LoginPage = () => {
                 placeholder="Usuario@axarnet.dev"
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <label htmlFor="password" className="text-sm font-medium text-foreground">
+              <label
+                htmlFor="password"
+                className="text-sm font-medium text-foreground"
+              >
                 Contraseña:
               </label>
               <InputGroup className="mb-2 mt-0.5">
