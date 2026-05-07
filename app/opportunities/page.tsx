@@ -24,6 +24,7 @@ import {
   arrayMove,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { Badge } from "@/components/ui/badge";
 
 export interface opportunityInterface {
   id: string;
@@ -88,7 +89,7 @@ const KanbanColumn = ({
     <Card className="w-full bg-background p-0.5">
       <CardHeader>
         <CardTitle className="text-lg font-bold flex justify-center items-center gap-2">
-          <div className={`h-3 w-3 rounded-full ${badgeColor}`} />
+          <Badge className={badgeColor} />
           {title}
           <span className="text-sm font-normal text-muted-foreground">
             ({items.length})
