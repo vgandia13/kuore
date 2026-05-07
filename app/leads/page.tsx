@@ -12,7 +12,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Bookmark, ChevronDown } from "lucide-react";
-import LeadHeader from "./LeadHeader";
+import LeadHeader, { ViewInterface, LeadInterface } from "./LeadHeader";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 
@@ -20,8 +20,7 @@ const LeadPage = () => {
   const [layoutMode, setLayoutMode] = useState<"table" | "grid">(() =>
     typeof window != "undefined" && window.innerWidth < 768 ? "grid" : "table",
   );
-
-  const leads = [
+  const [leads, setLeads] = useState<LeadInterface[]>([
     {
       id: 1,
       name: "John Steele",
@@ -49,7 +48,30 @@ const LeadPage = () => {
       leadSource: "Trade Show",
       lastActivity: "4/18/2025",
     },
+  ]);
+  const [selectedView, setSelectedView] = useState<ViewInterface>({
+    id: 3,
+    name: "Recently Viewed",
+    fields: ["Name", "Last Activity"],
+  });
+
+  const handleAddLead = (newLead: LeadInterface) => {
+    setLeads([...leads, newLead]);
+  };
+
+  const allColumns = [
+    { label: "Name", key: "name" },
+    { label: "Title", key: "title" },
+    { label: "Company", key: "company" },
+    { label: "Status", key: "leadStatus" },
+    { label: "Source", key: "leadSource" },
+    { label: "Last Activity", key: "lastActivity" },
   ];
+
+  const visibleColumns = allColumns.filter((col) =>
+    selectedView.fields.includes(col.label)
+  );
+
   const stats = [
     { label: "Total leads", value: leads.length },
     { label: "No activity", value: 0 },
@@ -62,7 +84,13 @@ const LeadPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
-      <LeadHeader layoutMode={layoutMode} setLayoutMode={setLayoutMode} />
+      <LeadHeader
+        layoutMode={layoutMode}
+        setLayoutMode={setLayoutMode}
+        selectedView={selectedView}
+        setSelectedView={setSelectedView}
+        onAddLead={handleAddLead}
+      />
 
       {/* Stats bar — mantiene su identidad visual de color marca */}
       <div className="flex flex-wrap items-center justify-start bg-blue-800 dark:bg-blue-950 text-white px-4 py-2 gap-2">
@@ -136,24 +164,17 @@ const LeadPage = () => {
             <Table className="border-collapse [&_th]:border [&_td]:border [&_th]:border-border [&_td]:border-border min-w-150">
               <TableHeader className="bg-muted">
                 <TableRow>
-                  {[
-                    "Name",
-                    "Title",
-                    "Company",
-                    "Status",
-                    "Source",
-                    "Last Activity",
-                  ].map((h) => (
-                    <TableHead key={h} className="font-bold text-foreground">
+                  {visibleColumns.map((col) => (
+                    <TableHead key={col.key} className="font-bold text-foreground">
                       <div className="flex items-center gap-1 cursor-pointer hover:text-foreground/80">
-                        {h === "Title" && (
+                        {col.key === "title" && (
                           <Bookmark
                             fill="currentColor"
                             className="text-muted-foreground mr-1"
                             size={14}
                           />
                         )}
-                        {h}{" "}
+                        {col.label}{" "}
                         <ChevronDown
                           size={14}
                           className="text-muted-foreground"
@@ -169,29 +190,28 @@ const LeadPage = () => {
                     key={lead.id}
                     className="hover:bg-muted/50 transition-colors"
                   >
-                    <TableCell className="font-medium text-blue-500 cursor-pointer hover:underline">
-                      {lead.name}
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <Bookmark size={14} className="text-muted-foreground" />
-                        {lead.title}
-                      </div>
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">
-                      {lead.company}
-                    </TableCell>
-                    <TableCell>
-                      <Badge variant="outline" className="font-normal">
-                        {lead.leadStatus}
-                      </Badge>
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">
-                      {lead.leadSource}
-                    </TableCell>
-                    <TableCell className="text-muted-foreground text-sm">
-                      {lead.lastActivity}
-                    </TableCell>
+                    {visibleColumns.map((col) => (
+                      <TableCell key={col.key}>
+                        {col.key === "name" ? (
+                          <span className="font-medium text-blue-500 cursor-pointer hover:underline">
+                            {lead.name}
+                          </span>
+                        ) : col.key === "leadStatus" ? (
+                          <Badge variant="outline" className="font-normal">
+                            {lead.leadStatus}
+                          </Badge>
+                        ) : col.key === "title" ? (
+                          <div className="flex items-center gap-2">
+                            <Bookmark size={14} className="text-muted-foreground" />
+                            {lead.title}
+                          </div>
+                        ) : (
+                          <span className="text-muted-foreground text-sm">
+                            {lead[col.key as keyof typeof lead]}
+                          </span>
+                        )}
+                      </TableCell>
+                    ))}
                   </TableRow>
                 ))}
               </TableBody>
