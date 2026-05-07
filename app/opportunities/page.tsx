@@ -84,15 +84,21 @@ const KanbanColumn = ({
 }) => {
   // Esto convierte la columna en una zona de drop válida
   const { setNodeRef, isOver } = useDroppable({ id: columnId });
+  const totalValue = items.reduce((acc, item) => acc + item.amount, 0);
 
   return (
     <Card className="w-full bg-background p-0.5">
       <CardHeader>
-        <CardTitle className="text-lg font-bold flex justify-center items-center gap-2">
-          <Badge className={badgeColor} />
-          {title}
-          <span className="text-sm font-normal text-muted-foreground">
-            ({items.length})
+        <CardTitle className="text-lg font-bold flex flex-col justify-center items-center gap-1">
+          <div className="flex items-center gap-2">
+            <Badge className={badgeColor} />
+            {title}
+            <span className="text-sm font-normal text-muted-foreground">
+              ({items.length})
+            </span>
+          </div>
+          <span className="text-xs font-normal text-muted-foreground opacity-70">
+            Total: €{totalValue.toLocaleString()}
           </span>
         </CardTitle>
       </CardHeader>
