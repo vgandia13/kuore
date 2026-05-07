@@ -13,6 +13,9 @@ import {
   useSensors,
   DragEndEvent,
   useDroppable,
+  DragOverlay,
+  DragStartEvent,
+  defaultDropAnimationSideEffects,
 } from "@dnd-kit/core";
 import {
   SortableContext,
@@ -30,6 +33,14 @@ export interface opportunityInterface {
   stage: string;
 }
 
+const OpportunityCard = ({ item }: { item: opportunityInterface }) => (
+  <div className="p-2 border rounded-md bg-card shadow-sm flex flex-col gap-1 cursor-grab opacity-100">
+    <div className="font-bold">{item.name}</div>
+    <div className="text-sm">€{item.amount.toLocaleString()}</div>
+    <div className="text-xs text-muted-foreground">{item.enterpriseName}</div>
+  </div>
+);
+
 const SortableCard = ({ item }: { item: opportunityInterface }) => {
   const {
     attributes,
@@ -43,7 +54,7 @@ const SortableCard = ({ item }: { item: opportunityInterface }) => {
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    opacity: isDragging ? 0.5 : 1,
+    opacity: isDragging ? 0.3 : 1,
   };
 
   return (
@@ -52,11 +63,9 @@ const SortableCard = ({ item }: { item: opportunityInterface }) => {
       style={style}
       {...attributes}
       {...listeners}
-      className="list-none p-2 border rounded-md bg-card shadow-sm cursor-grab flex flex-col gap-1"
+      className="list-none"
     >
-      <div className="font-bold">{item.name}</div>
-      <div className="text-sm">€{item.amount.toLocaleString()}</div>
-      <div className="text-xs text-muted-foreground">{item.enterpriseName}</div>
+      <OpportunityCard item={item} />
     </li>
   );
 };
@@ -135,9 +144,22 @@ const OpportunitiesPage = () => {
     },
   ]);
 
+  const [activeItem, setActiveItem] = useState<opportunityInterface | null>(
+    null,
+  );
+
   const sensors = useSensors(useSensor(PointerSensor));
 
+  const handleDragStart = (event: DragStartEvent) => {
+    const { active } = event;
+    const draggedItem = items.find((i) => i.id === active.id);
+    if (draggedItem) {
+      setActiveItem(draggedItem);
+    }
+  };
+
   const handleDragEnd = (event: DragEndEvent) => {
+    setActiveItem(null);
     const { active, over } = event;
     if (!over) return;
 
@@ -181,7 +203,9 @@ const OpportunitiesPage = () => {
       );
     }
   };
-
+  const handleDragCancel = () => {
+    setActiveItem(null);
+  };
   const tabs = [
     { label: "Account Name", value: "Zephyr Co." },
     { label: "Close Date", value: "01/01/2018" },
@@ -246,6 +270,8 @@ const OpportunitiesPage = () => {
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
+          onDragStart={handleDragStart}
+          onDragCancel={handleDragCancel}
           onDragEnd={handleDragEnd}
         >
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
@@ -259,6 +285,15 @@ const OpportunitiesPage = () => {
               />
             ))}
           </div>
+          <DragOverlay
+            dropAnimation={{
+              sideEffects: defaultDropAnimationSideEffects({
+                styles: { active: { opacity: "0.5" } },
+              }),
+            }}
+          >
+            {activeItem ? <OpportunityCard item={activeItem} /> : null}
+          </DragOverlay>
         </DndContext>
       </div>
     </>
