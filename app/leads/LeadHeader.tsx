@@ -30,6 +30,16 @@ interface LeadHeaderProps {
   setLayoutMode: (mode: "table" | "grid") => void;
 }
 
+export interface LeadInterface {
+  id: number;
+  name: string;
+  title: string;
+  company: string;
+  leadStatus: string;
+  leadSource: string;
+  lastActivity: string;
+}
+
 const LeadHeader = ({ layoutMode, setLayoutMode }: LeadHeaderProps) => {
   const [view, setView] = useState("Recently Viewed");
 
