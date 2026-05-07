@@ -162,6 +162,7 @@ const LeadHeader = ({
                     <Label>Name:</Label>
                     <Input
                       value={newLead.name}
+                      required
                       onChange={(e) =>
                         setNewLead({ ...newLead, name: e.target.value })
                       }
@@ -171,6 +172,7 @@ const LeadHeader = ({
                     <Label>Title:</Label>
                     <Input
                       value={newLead.title}
+                      required
                       onChange={(e) =>
                         setNewLead({ ...newLead, title: e.target.value })
                       }
@@ -180,6 +182,7 @@ const LeadHeader = ({
                     <Label>Company:</Label>
                     <Input
                       value={newLead.company}
+                      required
                       onChange={(e) =>
                         setNewLead({ ...newLead, company: e.target.value })
                       }
@@ -189,6 +192,7 @@ const LeadHeader = ({
                     <Label>Status:</Label>
                     <Input
                       value={newLead.leadStatus}
+                      required
                       onChange={(e) =>
                         setNewLead({ ...newLead, leadStatus: e.target.value })
                       }
@@ -198,6 +202,7 @@ const LeadHeader = ({
                     <Label>Source:</Label>
                     <Input
                       value={newLead.leadSource}
+                      required
                       onChange={(e) =>
                         setNewLead({ ...newLead, leadSource: e.target.value })
                       }
@@ -208,6 +213,7 @@ const LeadHeader = ({
                     <Input
                       type="date"
                       value={newLead.lastActivity}
+                      required
                       onChange={(e) =>
                         setNewLead({ ...newLead, lastActivity: e.target.value })
                       }
@@ -239,6 +245,7 @@ const LeadHeader = ({
                     <Input
                       type="text"
                       value={newViewName}
+                      required
                       onChange={(e) => setNewViewName(e.target.value)}
                     />
                   </Field>
