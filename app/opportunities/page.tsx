@@ -148,6 +148,8 @@ const OpportunitiesPage = () => {
     null,
   );
 
+  const totalAmount = items.reduce((acc, item) => acc + item.amount, 0);
+
   const sensors = useSensors(useSensor(PointerSensor));
 
   const handleDragStart = (event: DragStartEvent) => {
@@ -209,7 +211,7 @@ const OpportunitiesPage = () => {
   const tabs = [
     { label: "Account Name", value: "Zephyr Co." },
     { label: "Close Date", value: "01/01/2018" },
-    { label: "Amount", value: "$256,000" },
+    { label: "Amount", value: `€${totalAmount}` },
     { label: "Opportunity Owner", value: "Christine Mathison" },
   ];
 
