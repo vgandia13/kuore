@@ -225,7 +225,7 @@ const OpportunitiesPage = () => {
   const tabs = [
     { label: "Account Name", value: "Zephyr Co." },
     { label: "Close Date", value: "01/01/2018" },
-    { label: "Amount", value: `€${totalAmount}` },
+    { label: "Amount", value: `€${totalAmount.toLocaleString()}` },
     { label: "Opportunity Owner", value: "Christine Mathison" },
   ];
 
