@@ -37,6 +37,12 @@ const HomePage = () => {
       <Chart
         spacing={[20, 20, 25, 20]}
         options={{
+          tooltip: {
+            backgroundColor: theme === "dark" ? "#000000" : "#ffffff",
+            style: {
+              color: theme === "dark" ? "#ffffff" : "#000000",
+            },
+          },
           chart: {
             type: "area",
             backgroundColor: theme === "dark" ? "#000000" : "#ffffff",
@@ -66,6 +72,19 @@ const HomePage = () => {
           },
           plotOptions: {
             area: {
+              fillOpacity: 0.3,
+              fillColor: {
+                linearGradient: {
+                  x1: 0,
+                  y1: 0,
+                  x2: 0,
+                  y2: 1,
+                },
+                stops: [
+                  [0, "rgba(0, 255, 0, 0.6)"],
+                  [1, "rgba(99, 255, 241, 0)"],
+                ],
+              } ,
               marker: {
                 enabled: false,
                 symbol: "circle",
