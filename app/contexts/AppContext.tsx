@@ -41,9 +41,6 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     getServerSnapshot,
   );
 
-  // Depuración: Aseguramos que siempre tengamos un valor booleano
-  const safeUserLogged = typeof userLogged === 'boolean' ? userLogged : false;
-
   const setUserLogged = useCallback((status: boolean) => {
     if (status) {
       localStorage.setItem("userLogged", "true");
@@ -55,7 +52,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ userLogged: safeUserLogged, setUserLogged }}>
+    <AppContext.Provider value={{ userLogged: userLogged, setUserLogged }}>
       {children}
     </AppContext.Provider>
   );

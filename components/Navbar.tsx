@@ -30,7 +30,6 @@ const Navbar = () => {
   const { userLogged, setUserLogged } = useData();
 
   const handleLogout = () => {
-    localStorage.removeItem("userLogged");
     setUserLogged(false);
     toast.success("Cierre de sesión exitoso");
   };

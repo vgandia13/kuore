@@ -11,8 +11,6 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
   const router = useRouter();
 
   useEffect(() => {
-    if (userLogged === undefined) return;
-    
     // Protección de rutas
     if (pathname === "/" && userLogged) {
       router.replace("/home");
@@ -22,9 +20,6 @@ export default function LayoutContent({ children }: { children: React.ReactNode 
       router.replace("/home");
     }
   }, [userLogged, pathname, router]);
-
-  // Si no está definido (cargando estado), devolvemos null
-  if (userLogged === undefined) return null; 
 
   return (
     <>
