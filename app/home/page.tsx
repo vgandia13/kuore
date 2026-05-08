@@ -34,6 +34,8 @@ const HomePage = () => {
           </div>
         ))}
       </div>
+
+      {/*TODO: Graficos de area, stacked, nodos y area con varias lineas. */}
       <Chart
         spacing={[20, 20, 25, 20]}
         options={{
