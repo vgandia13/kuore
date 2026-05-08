@@ -126,7 +126,7 @@ const GraphArea = () => {
         },
     ]
       }}>
-        <ColumnSeries data={[3, 4, 3, 5, 2, 4, 2, 3, 2, 5, 1.75, 3, 4, 3]} />
+        <ColumnSeries />
       </Chart>
     </>
   );
