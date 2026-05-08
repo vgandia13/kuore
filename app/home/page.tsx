@@ -2,12 +2,17 @@
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { useData } from "../contexts/AppContext";
+import { Chart, Title, Legend } from "@highcharts/react";
+import { ColumnSeries } from "@highcharts/react/series/Column";
+import { AreaSeries } from "@highcharts/react/series/Area";
+import { useTheme } from "next-themes";
 
 const HomePage = () => {
   // Asumiendo que useData expone también un estado de carga
   const { userLogged } = useData();
   if (!userLogged) return null;
-  // 1. Manejo del es
+  const { theme } = useTheme();
+
   return (
     <div className="w-full max-w-7xl mx-auto p-6 space-y-10">
       {/* Cabecera / Hero */}
@@ -29,6 +34,58 @@ const HomePage = () => {
           </div>
         ))}
       </div>
+      <Chart
+        spacing={[20, 20, 25, 20]}
+        options={{
+          chart: {
+            type: "area",
+            backgroundColor: theme === "dark" ? "#000000" : "#ffffff",
+            style: {
+              fontFamily: "inherit",
+              color: theme === "dark" ? "#ffffff" : "#000000", // afecta bastantes elementos
+            },
+          },
+          xAxis: {
+            labels: {
+              style: { color: theme === "dark" ? "#ffffff" : "#000000" },
+            },
+            lineColor: theme === "dark" ? "#555" : "#ccd6eb",
+            tickColor: theme === "dark" ? "#555" : "#ccd6eb",
+          },
+          yAxis: {
+            labels: {
+              style: { color: theme === "dark" ? "#ffffff" : "#000000" },
+            },
+            title: {
+              style: { color: theme === "dark" ? "#ffffff" : "#000000" },
+            },
+            gridLineColor: theme === "dark" ? "#333" : "#e6e6e6",
+          },
+          legend: {
+            itemStyle: { color: theme === "dark" ? "#ffffff" : "#000000" },
+          },
+          plotOptions: {
+            area: {
+              marker: {
+                enabled: false,
+                symbol: "circle",
+                radius: 2,
+                states: {
+                  hover: {
+                    enabled: true,
+                  },
+                },
+              },
+            },
+          },
+        }}
+        containerProps={{
+          className: "chart-element",
+          style: { width: "100%", height: "100%" },
+        }}
+      >
+        <AreaSeries data={[3, 4, 1, 5, 2]} />
+      </Chart>
     </div>
   );
 };
