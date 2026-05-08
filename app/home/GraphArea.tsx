@@ -138,7 +138,6 @@ const GraphArea = () => {
       </Chart>
 
       {/* Grafico de donut */}
-      {/*TODO: investigar como cambiar de pie a donut */}
       <Chart
         title="Grafico de donut"
         options={{
@@ -158,10 +157,14 @@ const GraphArea = () => {
           },
           series: [
             {
+              type: "pie",
+              innerSize: "75%",
+              name: "Usuarios",
               dataLabels: [
                 {
                   enabled: true,
                   distance: 20,
+                  format: "{point.name}",
                 },
               ],
               data: [
