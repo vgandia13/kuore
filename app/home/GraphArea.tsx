@@ -2,12 +2,8 @@ import { Chart } from "@highcharts/react";
 import { AreaSeries } from "@highcharts/react/series/Area";
 import { ColumnSeries } from "@highcharts/react/series/Column";
 import { PieSeries } from "@highcharts/react/series/Pie";
-
 import { useTheme } from "next-themes";
 
-{
-  /*TODO: Graficos de area, stacked, donut, nodos y area con varias lineas. */
-}
 const GraphArea = () => {
   const { theme } = useTheme();
 
@@ -312,11 +308,6 @@ const GraphArea = () => {
                 ],
               },
               data: [
-                null,
-                null,
-                null,
-                null,
-                null,
                 2,
                 9,
                 13,
@@ -410,15 +401,6 @@ const GraphArea = () => {
                 ],
               },
               data: [
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
                 1,
                 5,
                 25,
@@ -508,13 +490,6 @@ const GraphArea = () => {
                 ],
               },
               data: [
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
                 3,
                 14,
                 42,
