@@ -1,4 +1,4 @@
-import { Chart, Title, Legend } from "@highcharts/react";
+import { Chart } from "@highcharts/react";
 import { AreaSeries } from "@highcharts/react/series/Area";
 import { ColumnSeries } from "@highcharts/react/series/Column";
 import { PieSeries } from "@highcharts/react/series/Pie";
