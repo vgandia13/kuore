@@ -4,7 +4,8 @@ CRM de ventas con interfaz en Next.js: dashboard con gráficos, pipeline Kanban 
 
 > **Estado:** solo frontend. Los datos de las pantallas son de ejemplo (definidos en el propio código) y el login es una simulación sin autenticación real. La capa de servicios con Axios (`services/`) está preparada para conectar una API REST, pero todavía no se usa en las pantallas.
 
-![Dashboard](docs/dashboard.png)
+![Dashboard con modo claro](docs/dashboard-light.png)
+![Dashboard con modo oscuro](docs/dashboard-dark.png)
 ![Kanban](docs/kanban.png)
 
 ## Qué incluye
