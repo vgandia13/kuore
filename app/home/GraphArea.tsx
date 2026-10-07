@@ -5,7 +5,7 @@ import { PieSeries } from "@highcharts/react/series/Pie";
 import { useTheme } from "next-themes";
 
 const GraphArea = () => {
-  const { theme } = useTheme();
+  const { resolvedTheme: theme } = useTheme();
 
   return (
     <>

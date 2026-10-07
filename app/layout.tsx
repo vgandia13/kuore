@@ -39,7 +39,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen">
         <AppProvider>
-          <ThemeProvider attribute="class" defaultTheme="system">
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             <Toaster position="top-center" richColors />
             <LayoutContent>{children}</LayoutContent>
           </ThemeProvider>
