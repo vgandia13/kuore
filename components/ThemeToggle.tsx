@@ -3,11 +3,11 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  // resolvedTheme devuelve "light" o "dark" incluso cuando theme === "system"
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -15,25 +15,20 @@ export function ThemeToggle() {
     setMounted(true);
   }, []);
 
-  // Si no está montado, renderizamos un placeholder o un botón deshabilitado
-  // para que el HTML coincida exactamente con lo que envió el servidor.
-  if (!mounted) {
-    return (
-      <Button variant="outline" size="icon" disabled>
-        <div className="h-5 w-5" />
-      </Button>
-    );
-  }
+  const isDark = mounted && resolvedTheme === "dark";
 
+  // Mismo marcado antes y después de montar: sin saltos de layout.
   return (
-    <>
+    <div className="flex items-center gap-2">
       <Sun size={20} />
       <Switch
         className="border border-border"
-        checked={theme === "dark"}
-        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        checked={isDark}
+        disabled={!mounted}
+        onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
+        aria-label="Cambiar tema claro/oscuro"
       />
       <Moon size={20} />
-    </>
+    </div>
   );
 }
